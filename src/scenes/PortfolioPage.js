@@ -66,7 +66,7 @@ class RepoCard extends React.Component{
 class ProjectListings extends React.Component{
     render(){
         return(
-            <Panel className="content">
+            <Panel>
                 <h2 id="ProjectListingsHeader">{this.props.header[this.props.lang]}</h2>
                 <br></br>
                 <Accordion>
@@ -75,10 +75,10 @@ class ProjectListings extends React.Component{
                             <Grid>
                                 <Row className="show-grid">
                                     <Col xs={12} md={5}>
-                                        <Image src={item.image} responsive />
+                                        <a  href={item.link}><Image src={item.image} responsive /></a>
                                     </Col>
                                     <Col xs={12} md={5}>
-                                        <h4>{item.name}</h4>
+                                        <a  href={item.link}><h4>{item.name}</h4></a>
                                         <div>{item.description}</div>
                                     </Col>
                                 </Row>
@@ -100,7 +100,7 @@ class Example extends React.Component {
       const events = this.props.feed;
   
       return (
-        <div className="content">
+        <div>
             <GitHubFeed id="githubevents"
                 fullName={fullName} // Provide Full Name as displayed on GitHub
                 userName={userName} // Provide User Name as displayed on Guthub

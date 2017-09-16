@@ -16,14 +16,16 @@ export default class NavigationBar extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <IndexLinkContainer to="/"><NavItem>{this.props.store.data.navigation[0][this.props.store.lang]}</NavItem></IndexLinkContainer>
-                        <LinkContainer to="/portfolio"><NavItem>{this.props.store.data.navigation[1][this.props.store.lang]}</NavItem></LinkContainer>
-                        <LinkContainer to="/aboutme"><NavItem>{this.props.store.data.navigation[2][this.props.store.lang]}</NavItem></LinkContainer>
-                        <LinkContainer to="/chat"><NavItem>{this.props.store.data.navigation[4][this.props.store.lang]}</NavItem></LinkContainer>
-                        <LinkContainer to="/mangareader"><NavItem>{this.props.store.data.navigation[5][this.props.store.lang]}</NavItem></LinkContainer>
+                        <IndexLinkContainer to="/"><NavItem>{this.props.store.data.navigation.home[this.props.store.lang]}</NavItem></IndexLinkContainer>
+                        <LinkContainer to="/portfolio"><NavItem>{this.props.store.data.navigation.projects[this.props.store.lang]}</NavItem></LinkContainer>
+                        <LinkContainer to="/aboutme"><NavItem>{this.props.store.data.navigation.aboutme[this.props.store.lang]}</NavItem></LinkContainer>
+                        <NavDropdown title={this.props.store.data.navigation.sideprojects[this.props.store.lang]} id="basic-nav-dropdown">
+                            <LinkContainer to="/chat"><NavItem>{this.props.store.data.navigation.chat[this.props.store.lang]}</NavItem></LinkContainer>
+                            <LinkContainer to="/mangareader"><NavItem>{this.props.store.data.navigation.mangareader[this.props.store.lang]}</NavItem></LinkContainer>
+                        </NavDropdown>
                     </Nav>
                     <Nav pullRight>
-                    <LinkContainer to="/login"><NavItem>{this.props.store.data.navigation[3][this.props.store.lang]}</NavItem></LinkContainer>
+                    <LinkContainer to="/login"><NavItem>{this.props.store.data.navigation.login[this.props.store.lang]}</NavItem></LinkContainer>
                     <NavDropdown title={this.props.store.data.selectorText[this.props.store.lang]} id="basic-nav-dropdown">
                         <MenuItem onSelect={this.props.store.changeEng}>ENG</MenuItem>
                         <MenuItem onSelect={this.props.store.changeJap}>日本語</MenuItem>

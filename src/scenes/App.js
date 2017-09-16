@@ -16,12 +16,14 @@ class App extends Component {
     return (
       <div className="App">
         <NavigationBar store={this.props}/>
-        <Switch>
-            <Route exact path='/' render={()=><HomePage store={this.props}/>}/>
-            <Route path='/aboutme' render={()=><AboutMePage store={this.props}/>}/>
-            <Route path='/portfolio' render={()=><PortfolioPage store={this.props}/>}/>
-            <Route render={()=><HomePage store={this.props}/>}/>
-        </Switch>
+        <div className="container">
+          <Switch >
+              <Route exact path='/' render={()=><HomePage store={this.props}/>}/>
+              <Route path='/aboutme' render={()=><AboutMePage store={this.props}/>}/>
+              <Route path='/portfolio' render={()=><PortfolioPage store={this.props}/>}/>
+              <Route render={()=><HomePage store={this.props}/>}/>
+          </Switch>
+        </div>
       </div>
     );
   }
