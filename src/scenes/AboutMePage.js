@@ -50,7 +50,7 @@ class AboutMe extends React.Component {
                             </OverlayTrigger>
                         </div>
                     </PageHeader>
-                    <div id="imgHolderAboutMe"><Image id="imagefloatleft" src={require("./../assets/me.jpg")} rounded /></div>
+                    <div id="imgHolderAboutMe"><Image id="imagefloatleft" src={require("./../assets/me.png")} rounded /></div>
                     <h3 id="name">{this.props.data.name[this.props.lang]}</h3> 
                     {this.props.lang === 1 &&
                         <h5>{this.props.data.japName[this.props.lang]}</h5>

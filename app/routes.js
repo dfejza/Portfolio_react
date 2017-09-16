@@ -108,6 +108,6 @@ module.exports = function(app) {
 
 	// application -------------------------------------------------------------
 	app.use(function(req, res) {
-    	res.sendFile(path.join(__dirname, 'build', 'index.html')); // load the single view file (angular will handle the page changes on the front-end)
+		res.sendfile('./build/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
 };
