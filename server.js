@@ -13,7 +13,7 @@ var http = require('http');
 //var mustacheExpress = require('mustache');
 
 
-var port     = process.env.PORT || 8080; // set the port
+var port     = process.env.PORT || 3001; // set the port
 // configuration ===============================================================
 app.use(express.static(path.join(__dirname, 'build')));// set the static files location /public/img will be /img for users
 app.use(bodyParser.json()); // support json encoded bodies

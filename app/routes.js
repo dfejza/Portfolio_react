@@ -28,6 +28,7 @@ module.exports = function(app) {
 
 	// send data -------------------------------------------------------------
 	app.post('/sendtodb', function(req, res) {
+		console.log("receiving");
 		var postData = {
 			date : req.body.date,
 			ip : req.body.ip,
@@ -35,11 +36,13 @@ module.exports = function(app) {
 			email : req.body.email,
 			message : req.body.message
 		}
+		console.log(postData);
 		// Connect to the db
 		var core = req.db.collection('userinfo');
 		core.insert(postData, function(err,results){
 			if(err) throw err;
-		})
+		});
+		res.json(postData);
 	});
 
 	// update chat -------------------------------------------------------------
