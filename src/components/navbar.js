@@ -10,7 +10,7 @@ export default class NavigationBar extends React.Component {
                 <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <LinkContainer to="/aboutme"><a>dfejza</a></LinkContainer>
+                        <LinkContainer to="/aboutme"><a>dfejza - test</a></LinkContainer>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
