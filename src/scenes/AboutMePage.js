@@ -17,7 +17,7 @@ export default class AboutMePage extends React.Component {
 class AboutMe extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {showModal: false};
+        this.state = {showModal: false, showThanks: false,timePassed: false};
 
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
@@ -26,6 +26,8 @@ class AboutMe extends React.Component {
 
     close() {
         this.setState({ showModal: false });
+        this.setState({ showThanks: true });
+        setTimeout(() => {this.setState({ showThanks: false })}, 3500);
     }
 
     open() {
@@ -61,6 +63,11 @@ class AboutMe extends React.Component {
 
                 <Modal bsSize="lg" show={this.state.showModal} onHide={this.close}>
                     <ContactMeModalContent closeModal={this.close} data={this.props.data} lang={this.props.lang}/>
+                </Modal>
+                <Modal bsSize="sm" show={this.state.showThanks}>
+                    <Modal.Body>
+                        <Thumbnail src={require("./../assets/shake.gif")} alt="242x200"></Thumbnail>
+                    </Modal.Body>
                 </Modal>
             </div>
         );
