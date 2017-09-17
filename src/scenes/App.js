@@ -10,6 +10,7 @@ import HomePage from './HomePage'
 import AboutMePage from './../scenes/AboutMePage'
 import PortfolioPage from './../scenes/PortfolioPage'
 import { connect } from 'react-redux'
+import UnderConstructionNot from './../components/UnderConstructionNot'
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
               <Route path='/portfolio' render={()=><PortfolioPage store={this.props}/>}/>
               <Route render={()=><HomePage store={this.props}/>}/>
           </Switch>
+          <UnderConstructionNot/>
         </div>
       </div>
     );
