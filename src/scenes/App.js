@@ -9,6 +9,7 @@ import NavigationBar from './../components/navbar.js'
 import HomePage from './HomePage'
 import AboutMePage from './../scenes/AboutMePage'
 import PortfolioPage from './../scenes/PortfolioPage'
+import ChatPage from './../scenes/ChatPage'
 import { connect } from 'react-redux'
 import UnderConstructionNot from './../components/UnderConstructionNot'
 
@@ -22,6 +23,7 @@ class App extends Component {
               <Route exact path='/' render={()=><HomePage store={this.props}/>}/>
               <Route path='/aboutme' render={()=><AboutMePage store={this.props}/>}/>
               <Route path='/portfolio' render={()=><PortfolioPage store={this.props}/>}/>
+              <Route path='/chat' render={()=><ChatPage store={this.props}/>}/>
               <Route render={()=><HomePage store={this.props}/>}/>
           </Switch>
           <UnderConstructionNot/>
