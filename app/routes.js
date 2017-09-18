@@ -57,10 +57,11 @@ module.exports = function(app) {
 	// update chat -------------------------------------------------------------
 	app.post('/insertchat', function(req, res) {
 		var postData = {
-			time : req.body.time,
+			time : new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
 			id : req.body.id,
 			msg : req.body.msg,
 		}
+		console.log(postData)
 		// Connect to the db
 		var core = req.db.collection('chat');
 		core.insert(postData, function(err,results){

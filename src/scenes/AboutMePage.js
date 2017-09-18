@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeader, Panel, Image, Row, Col, Thumbnail, Tooltip, OverlayTrigger, Modal, Glyphicon, Form, FormGroup, FormControl, Button } from 'react-bootstrap';
-import sendContact from './../components/post'
+import postRequests from '../components/post'
 
 
 export default class AboutMePage extends React.Component {
@@ -87,7 +87,7 @@ class ContactMeModalContent extends React.Component{
 
     sendMessage(){
         this.props.closeModal();
-        sendContact(this.state)
+        postRequests.sendContact(this.state);
     }
 
     handleChangeName(e) {

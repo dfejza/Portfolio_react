@@ -10,4 +10,10 @@ function sendContact(data) {
     });
 }
 
-export default sendContact
+function sendChat(data) {
+	console.log("testing");
+	console.log(data);
+    axios.post('/insertchat', data);
+}
+
+export default { sendChat,sendContact };

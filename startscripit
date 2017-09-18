@@ -1,4 +1,4 @@
 #!/bin/bash
 sudo service mongod start &
-nodemon server.js &
-node start
+forever start server.js &
+forever start -c "npm start" ./

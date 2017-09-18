@@ -170,7 +170,8 @@
 }
 
 #chat{
-  height: 400px;
+  max-height: 400px;
+  overflow: auto;
 }
 
 .chatInput{
@@ -212,4 +213,39 @@
 	100% {
 		opacity: 0;
 	}
+}
+
+/*Scrollbar Style*/
+div::-webkit-scrollbar {
+    width: .5em;
+}
+ 
+div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+div::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+#mangaSelection{
+  max-width: 540px;
+  margin: 0 auto;
+}
+.carousel-indicators {
+  visibility:hidden;
+}
+
+#mangaPageDiv{
+  margin: 0 auto;
+  text-align: center;
+}
+
+#textAlignCenter{
+  text-align: center;
+}
+
+#mangaPage{
+  width: 100%;
 }
