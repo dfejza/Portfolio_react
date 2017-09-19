@@ -1,6 +1,5 @@
 import React from 'react';
 import {Pagination} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export default class MangaReaderPage extends React.Component{
 	constructor(props) {
@@ -15,28 +14,18 @@ export default class MangaReaderPage extends React.Component{
 		this.incrementPage = this.incrementPage.bind(this);
 		this.handleSelect = this.handleSelect.bind(this);
 		this.nextPage = this.nextPage.bind(this);
-		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
 
     componentDidMount() {
 		this.props.mangaData.forEach((value) => {
 			// Search the dictionary for the correct entry
-			if(value.name == this.state.manga)
+			if(value.name === this.state.manga)
 			{
 				this.setState({pageCount : value.volumePageCountList[value.volumeCount-1]});
 				this.setState({volumeCount : value.volumeCount});	
 			}
 		});
-    }
-
-    handleKeyPress = (event) => {
-      if((event.key == 37) && (this.state.page > 1)){
-        this.incrementPage();
-      }
-      if((event.key == 39) && (this.state.page < this.state.pageCount)){
-        this.handleSelect((parseInt(this.state.page, 10)-1));
-      }
-    }
+	  }
 
 	getInitialState() {
 		return {
@@ -54,9 +43,12 @@ export default class MangaReaderPage extends React.Component{
 
 	incrementPage(){
 		var nextPage = (parseInt(this.state.page, 10) + 1);
-		this.setState({page : nextPage}, () => {
-            this.nextPage();
-        });
+		if(nextPage <= this.state.pageCount)
+		{
+			this.setState({page : nextPage}, () => {
+	            this.nextPage();
+	        });
+		}
 	}
 
 	nextPage(){
@@ -65,7 +57,7 @@ export default class MangaReaderPage extends React.Component{
 
 	render(){
 		return(
-			<div id="textAlignCenter" onKeyPress={this.handleKeyPress}>
+			<div id="textAlignCenter">
 		      <Pagination id="mangaPageDiv"
 		        prev
 		        next
@@ -86,9 +78,37 @@ export default class MangaReaderPage extends React.Component{
 }
 
 class MangaSinglePage extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = { imageStatus: 'loading' };
+  }
+ 
+  changeLoading(){
+  	this.setState({ imageStatus: 'loading' });
+  	document.getElementById("overlay").style.display = "block";
+  }
+
+  handleImageLoaded() {
+    this.setState({ imageStatus: 'loaded' });
+    document.getElementById("overlay").style.display = "none";
+  }
+ 
+  handleImageErrored() {
+    this.setState({ imageStatus: 'failed to load' });
+  }
 	render() {
 		return(
-			<img id="mangaPage" src={require("./../assets/manga/" + this.props.manga + "/volume"+ this.props.volume + "/y (" + this.props.page + ").jpg")}/>
+			<div>
+				<div id="overlay">
+				  <div id="text">Loading</div>
+				</div>
+				<img id={this.state.imageStatus} 
+				  alt=""
+		          onLoad={this.handleImageLoaded.bind(this)}
+		          onError={this.handleImageErrored.bind(this)}
+		          onClick={this.changeLoading.bind(this)}
+	          	src={require("./../assets/manga/" + this.props.manga + "/volume"+ this.props.volume + "/y (" + this.props.page + ").jpg")}/>
+	         </div>
 		);
 	}
 }
