@@ -1,6 +1,7 @@
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import { IndexLinkContainer } from 'react-router-bootstrap'
+import LoginComponent from './login'
 import React from 'react';
 
 export default class NavigationBar extends React.Component {
@@ -25,7 +26,14 @@ export default class NavigationBar extends React.Component {
                         </NavDropdown>
                     </Nav>
                     <Nav pullRight>
-                    <LinkContainer to="/login"><NavItem>{this.props.store.data.navigation.login[this.props.store.lang]}</NavItem></LinkContainer>
+                    {
+                    !this.props.authed &&
+                    <LoginComponent lang={this.props.store.lang} data={this.props.store.data} authed={this.props.authed}/>
+                    }
+                   {
+                    this.props.authed &&
+                    <LinkContainer to="/dashboard"><NavItem>{this.props.store.data.navigation.myaccount[this.props.store.lang]}</NavItem></LinkContainer>
+                    }
                     <NavDropdown title={this.props.store.data.selectorText[this.props.store.lang]} id="basic-nav-dropdown">
                         <MenuItem onSelect={this.props.store.changeEng}>ENG</MenuItem>
                         <MenuItem onSelect={this.props.store.changeJap}>日本語</MenuItem>
@@ -37,4 +45,3 @@ export default class NavigationBar extends React.Component {
         );
     }
 }
-

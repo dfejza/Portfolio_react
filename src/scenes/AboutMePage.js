@@ -43,23 +43,21 @@ class AboutMe extends React.Component {
     render() {
         return (
             <div>
-                <Panel>
-                    <PageHeader>
-                        {this.props.header.aboutme[this.props.lang]} 
-                        <div id="floatrightmail">
-                            <OverlayTrigger placement="top" overlay={this.tooltip(this.props.data.tooltips.contact[this.props.lang])} onClick={this.open}>
-                                <Thumbnail src={require("./../assets/contact.png")} alt="242x200"></Thumbnail>
-                            </OverlayTrigger>
-                        </div>
-                    </PageHeader>
-                    <div id="imgHolderAboutMe"><Image id="imagefloatleft" src={require("./../assets/me.png")} rounded /></div>
-                    <h3 id="name">{this.props.data.name[this.props.lang]}</h3> 
-                    {this.props.lang === 1 &&
-                        <h5>{this.props.data.japName[this.props.lang]}</h5>
-                    }
-                        <p id="aboutme">{this.props.data.summary[this.props.lang]}</p>
+                <PageHeader>
+                    {this.props.header.aboutme[this.props.lang]} 
+                    <div id="floatrightmail">
+                        <OverlayTrigger placement="top" overlay={this.tooltip(this.props.data.tooltips.contact[this.props.lang])} onClick={this.open}>
+                            <Thumbnail src={require("./../assets/contact.png")} alt="242x200"></Thumbnail>
+                        </OverlayTrigger>
+                    </div>
+                </PageHeader>
+                <div id="imgHolderAboutMe"><Image id="imagefloatleft" src={require("./../assets/me.png")} rounded /></div>
+                <h3 id="name">{this.props.data.name[this.props.lang]}</h3> 
+                {this.props.lang === 1 &&
+                    <h5>{this.props.data.japName[this.props.lang]}</h5>
+                }
+                <p id="aboutme">{this.props.data.summary[this.props.lang]}</p>
 
-                </Panel>
 
                 <Modal bsSize="lg" show={this.state.showModal} onHide={this.close}>
                     <ContactMeModalContent closeModal={this.close} data={this.props.data} lang={this.props.lang}/>

@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom'
 // Its API is { subscribe, dispatch, getState }.
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
+import reducer from './store/reducers'
 
 const store = createStore(reducer)
 

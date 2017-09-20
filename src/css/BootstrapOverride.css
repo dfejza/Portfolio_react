@@ -1,3 +1,8 @@
+html *
+{
+   font-family: 'Roboto', sans-serif;
+}
+
 .navbar{
   background-color: rgba(0, 0, 0, 0.00);
   color: #000000;
@@ -65,6 +70,11 @@
     margin-left: 0%;
     margin-right: 0%;
     margin-top: 2%;
+  }
+
+  .popover.bottom {
+    max-width: 100% !important;
+    width: 100%;
   }
 
   /* Remove the page indicator underline */
@@ -282,4 +292,43 @@ div::-webkit-scrollbar-thumb {
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+}
+
+
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of Login Dropdown */
+
+.popover{
+    max-width: 100% !important;
+    width: 320px;
+    opacity: .9;
+}
+.loginMenu{
+  max-width: 320px !important;
+}
+
+#regSignin{
+    width: 100%;
+}
+#googleSignin{
+  width: 100%;
+    background-color: #E24825;
+    color: #FFF;
+}
+#facebookSignin{
+  width: 100%;
+    background-color: #385499;
+    color: #FFF;
+}
+.popover>.arrow, .popover>.arrow:after {
+  visibility: hidden;
 }

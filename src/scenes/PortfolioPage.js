@@ -25,7 +25,9 @@ export default class PortfolioPage extends React.Component {
         return (
             <div>
                 <CardGrid page1={this.props.store.data.page1} repo={this.props.store.data.page1.git} lang={this.props.store.lang}/>
+                <hr />
                 <ProjectListings repos={this.props.store.data.page1.git.repos} lang={this.props.store.lang} header={this.props.store.data.page1.repoHeader}/>
+                <hr />
                 <Example feed={this.state.feed}/>
             </div>
         );
@@ -46,7 +48,7 @@ class CardGrid extends React.Component{
 class RepoCard extends React.Component{
     render(){
         return(
-            <Panel id="RepoCard">
+            <div id="RepoCard">
                 <Media>
                     <Media.Left>
                         <img width={110} height={100} src={require("./../assets/" + this.props.type)} alt=""/>
@@ -58,7 +60,7 @@ class RepoCard extends React.Component{
                         <p id="following">{this.props.page1.following[this.props.lang]} : {this.props.repo.following}</p>
                     </Media.Body>
                 </Media>
-            </Panel>
+            </div>
         );
     }
 }
@@ -66,7 +68,7 @@ class RepoCard extends React.Component{
 class ProjectListings extends React.Component{
     render(){
         return(
-            <Panel>
+            <div> <br></br>
                 <h2 id="ProjectListingsHeader">{this.props.header[this.props.lang]}</h2>
                 <br></br>
                 <Accordion>
@@ -86,7 +88,7 @@ class ProjectListings extends React.Component{
                         </Panel>
                     ))}
                 </Accordion>
-            </Panel>
+            </div>
         );
     }
 }

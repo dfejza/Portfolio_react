@@ -233,6 +233,26 @@
             "comment": [
                 "Comment",
                 "\u30b3\u30e1\u30f3\u30c8"
+            ],
+            "password": [
+                "Password",
+                "パスワード"
+            ],
+            "signIn": [
+                "Sign In",
+                "サインイン"
+            ],
+            "google": [
+                "Sign in with Google",
+                "Googleでサインイン"
+            ],
+            "facebook": [
+                "Sign in with Facebook",
+                "Facebookでサインイン"
+            ],
+            "signUp": [
+                "Sign Up",
+                "サインアップ"
             ]
         },
         "japName": [
@@ -278,6 +298,10 @@
         "sideprojects": [
             "Other",
             "他"
+        ],
+        "myaccount": [
+            "My Account",
+            "マイアカウント"
         ]
     }
 }

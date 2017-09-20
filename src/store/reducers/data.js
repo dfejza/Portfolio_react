@@ -1,4 +1,4 @@
-import jsonFile from './../assets/data/data.json';
+import jsonFile from './../../assets/data/data.json';
 
 
  const defaultState = { data: jsonFile, lang: 0}
