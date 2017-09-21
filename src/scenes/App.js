@@ -15,9 +15,9 @@ import MangaReader from './../scenes/MangaReader'
 import MangaRaderPage from './../scenes/MangaReaderPage'
 import Dashboard from './../scenes/Dashboard'
 import { connect } from 'react-redux'
-import UnderConstructionNot from './../components/UnderConstructionNot'
 
 import styles from './../css/BootstrapOverride.css';
+
 
 class App extends Component {
   state = {
@@ -47,9 +47,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className={styles}>
-        <NavigationBar store={this.props} authed={this.state.authed}/>
-        <div className="container">
+      <div>
+        <NavigationBar store={this.props}/>
+
+
+        <div className="centered-container">
           <Switch >
               <Route exact path='/' render={()=><HomePage store={this.props}/>}/>
               <Route path='/aboutme' render={()=><AboutMePage store={this.props}/>}/>
@@ -61,10 +63,7 @@ class App extends Component {
                   ? <Dashboard />
                   : <Redirect to={{pathname: '/', state: {from: this.props.location}}} />}
               />;
-
-              <Route render={()=><HomePage store={this.props}/>}/>
           </Switch>
-          <UnderConstructionNot/>
         </div>
       </div>
     );
@@ -79,10 +78,3 @@ const mapStateToProps = (state) => {
 };
 
 export default withRouter(connect(mapStateToProps)(App))
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//       fetchData: (url) => dispatch(itemsFetchData(url))
-//   };
-// };
-
-// export default App;

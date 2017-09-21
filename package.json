@@ -10,6 +10,7 @@
     "nodemon": "^1.12.1",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
+    "react-burger-menu": "^2.1.6",
     "react-dom": "^15.6.1",
     "react-github-activity": "^1.0.2",
     "react-redux": "^5.0.6",

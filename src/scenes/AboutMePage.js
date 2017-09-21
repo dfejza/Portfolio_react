@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Panel, Image, Row, Col, Thumbnail, Tooltip, OverlayTrigger, Modal, Glyphicon, Form, FormGroup, FormControl, Button } from 'react-bootstrap';
+import { PageHeader, Image, Row, Col, Thumbnail, Tooltip, OverlayTrigger, Modal, Glyphicon, Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 import postRequests from '../components/post'
 
 

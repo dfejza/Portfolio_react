@@ -1,46 +1,50 @@
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap'
-import { IndexLinkContainer } from 'react-router-bootstrap'
+import { FormControl, option } from "react-bootstrap"
+// import { LinkContainer } from 'react-router-bootstrap'
+import { Link} from 'react-router-dom';
+// import { IndexLinkContainer } from 'react-router-bootstrap'
 import LoginComponent from './login'
 import React from 'react';
+import { slide as Menu } from 'react-burger-menu'
 
 export default class NavigationBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: 'eng'};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+    handleChange(event) {
+    this.setState({value: event.target.value});
+    if(event === "eng"){
+        this.props.store.changeEng();
+    }
+    else
+    {
+        this.props.store.changeJap();
+    }
+  }
     render() {
         return (
             <div>
-                <Navbar inverse collapseOnSelect>
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <LinkContainer to="/aboutme"><a>dfejza</a></LinkContainer>
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                </Navbar.Header>
-                <Navbar.Collapse>
-                    <Nav>
-                        <IndexLinkContainer to="/"><NavItem>{this.props.store.data.navigation.home[this.props.store.lang]}</NavItem></IndexLinkContainer>
-                        <LinkContainer to="/portfolio"><NavItem>{this.props.store.data.navigation.projects[this.props.store.lang]}</NavItem></LinkContainer>
-                        <LinkContainer to="/aboutme"><NavItem>{this.props.store.data.navigation.aboutme[this.props.store.lang]}</NavItem></LinkContainer>
-                        <NavDropdown title={this.props.store.data.navigation.sideprojects[this.props.store.lang]} id="basic-nav-dropdown">
-                            <LinkContainer to="/chat"><NavItem>{this.props.store.data.navigation.chat[this.props.store.lang]}</NavItem></LinkContainer>
-                            <LinkContainer to="/mangareader"><NavItem>{this.props.store.data.navigation.mangareader[this.props.store.lang]}</NavItem></LinkContainer>
-                        </NavDropdown>
-                    </Nav>
-                    <Nav pullRight>
-                    {
-                    !this.props.authed &&
-                    <LoginComponent lang={this.props.store.lang} data={this.props.store.data} authed={this.props.authed}/>
-                    }
-                   {
-                    this.props.authed &&
-                    <LinkContainer to="/dashboard"><NavItem>{this.props.store.data.navigation.myaccount[this.props.store.lang]}</NavItem></LinkContainer>
-                    }
-                    <NavDropdown title={this.props.store.data.selectorText[this.props.store.lang]} id="basic-nav-dropdown">
-                        <MenuItem onSelect={this.props.store.changeEng}>ENG</MenuItem>
-                        <MenuItem onSelect={this.props.store.changeJap}>日本語</MenuItem>
-                    </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
-                </Navbar>
+                <Menu right>
+                  <Link to="/"><h3>{this.props.store.data.navigation.home[this.props.store.lang]}</h3></Link>
+                  <div className="Other">
+                      <Link to="/chat"><h3>{this.props.store.data.navigation.chat[this.props.store.lang]}</h3></Link>
+                      <Link to="/mangareader"><h3>{this.props.store.data.navigation.mangareader[this.props.store.lang]}</h3></Link>
+                      {
+                      !this.props.authed &&
+                      <LoginComponent lang={this.props.store.lang} data={this.props.store.data} authed={this.props.authed}/>
+                      }
+                      {
+                      this.props.authed &&
+                      <Link to="/dashboard"><h3>{this.props.store.data.navigation.myaccount[this.props.lang]}</h3></Link>
+                      }
+                      <FormControl componentClass="select" value={this.state.value} onChange={this.handleChange} placeholder="eng">
+                        <option value="eng">ENG</option>
+                        <option value="jap">日本語</option>
+                      </FormControl>
+                  </div>
+                </Menu>
             </div>
         );
     }

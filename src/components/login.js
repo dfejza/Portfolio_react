@@ -97,8 +97,8 @@ export default class LoginComponent extends React.Component{
 		  </Popover>
 		);
 		return(
-            <OverlayTrigger className="loginMenu" trigger="click" rootClose placement="bottom" overlay={popoverClickRootClose}>
-              <NavItem>{this.props.data.navigation.login[this.props.lang]}</NavItem>
+            <OverlayTrigger className="loginMenu" trigger="click" rootClose placement="left" overlay={popoverClickRootClose}>
+              <a><h3>{this.props.data.navigation.login[this.props.lang]}</h3></a>
             </OverlayTrigger>
 		);
 	}
