@@ -1,7 +1,11 @@
 {
     "selectorText": [
-        "Language: ",
-        "\u8a00\u8a9e: "
+        "Language ",
+        "\u8a00\u8a9e "
+    ],
+    "language": [
+        "English",
+        "日本語"
     ],
     "chatRoomTitle": [
         "Pitiful Chat Room",
@@ -298,6 +302,10 @@
         "sideprojects": [
             "Other",
             "他"
+        ],
+        "contact": [
+            "Contact Me",
+            "\u9023\u7d61"
         ],
         "myaccount": [
             "My Account",

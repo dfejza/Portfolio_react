@@ -238,6 +238,10 @@ p, .paragraph {
     border-right: none !important;
   }
 
+  .ListBottom{
+    color: grey;
+  }
+
   #AboutMeGrid{
     border-bottom: none !important;
     border-top: none !important;
