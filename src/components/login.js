@@ -1,5 +1,5 @@
 import React from "react";
-import { login, resetPassword, auth } from '../helpers/auth'
+import { login, resetPassword, auth, loginWithFacebook } from '../helpers/auth'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
@@ -62,17 +62,30 @@ class LoginDialogue extends React.Component {
 		      this.setState(setErrorMsgLogin('Invalid username/password.'))
 		    })
 	}
-	handleSubmitRegister = (e) => {
-		e.preventDefault()
-		auth(this.state.email, this.state.password).then( ()=>{
+  handleSubmitRegister = (e) => {
+    e.preventDefault()
+    auth(this.state.email, this.state.password).then( ()=>{
           if(this.props.authed){
             this.handleRequestClose();
             this.props.onDrawerClose();
           }
         }
       )
-		  .catch(e => this.setState(setErrorMsgRegister(e)))
-	}
+      .catch(e => this.setState(setErrorMsgRegister(e)))
+  }
+  handleFacebookLogin = (e) => {
+    e.preventDefault()
+    loginWithFacebook().then( ()=>{
+          if(this.props.authed){
+            this.handleRequestClose();
+            this.props.onDrawerClose();
+          }
+        }
+      )
+      .catch((error) => {
+      this.setState(setErrorMsgLogin('Invalid username/password.'))
+    })
+  }
 
 	resetPassword = () => {
 		resetPassword(this.email.value)
@@ -128,7 +141,7 @@ class LoginDialogue extends React.Component {
 				    </Button>
 				</Grid>
 				<Grid item xs={12}>
-				    <Button className={classes.button} id="facebookSignin" type="submit">
+				    <Button className={classes.button} id="facebookSignin" type="submit" onClick={this.handleFacebookLogin}>
 				      {this.props.contact.facebook[this.props.lang]}
 				    </Button>
 				</Grid>
