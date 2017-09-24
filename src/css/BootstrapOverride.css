@@ -27,10 +27,6 @@ html, body {
   -o-align-items: center;
   align-items: center;
   -ms-flex-align: center;
-
-  border-bottom: 2px solid #e7ebee;
-  padding-bottom: 3rem;
-  margin-bottom: 3rem;
 }
 
 .profileCard #info {
@@ -43,73 +39,23 @@ html, body {
   margin: 0;
 }
 
-.AboutMe{
-/*  width: 30%;*/
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -moz-box;
-  display: flex;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -o-align-items: center;
-  align-items: center;
-  -ms-flex-align: center;
-}
 
-.WhatIDo{
-/*  width: 30%;*/
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -moz-box;
-  display: flex;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -o-align-items: center;
-  align-items: center;
-  -ms-flex-align: center;
-  padding-bottom: 3rem;
-  padding-top: 3rem;
-  margin-top: 10%;
-}
 
 .LatestWork{
 /*  width: 30%;*/
   margin: 0 auto;
-  padding-top: 3rem;
-  margin-top: 3rem;
-  border-top: 2px solid #e7ebee;
-  border-bottom: 2px solid #e7ebee;
 }
 
 .AboutMeGridLeftSide{
-  padding-right: 3rem;
-  border-right: 2px solid #e7ebee;
+
 }
 
 .Contact{
-  margin-top: 3rem;
-  margin-bottom: 3rem;
   padding-bottom: 3rem;
 }
 
 #AboutMeGrid{
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .footer {
@@ -123,7 +69,6 @@ html, body {
 
 .headerMe{
   margin: 0 auto;
-  margin-top: 10%;
   text-align: center;
 }
 
@@ -143,6 +88,8 @@ html, body {
 }
 
 .centered-container {
+      background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
+
     display: -webkit-box;
     display: -moz-box;
     display: flex;
@@ -169,6 +116,10 @@ html, body {
     align-items: center;
     -ms-flex-align: center;
     height: 100%;
+}
+
+.img-circle {
+    border-radius: 50%;
 }
 
 p, .paragraph {
@@ -494,12 +445,12 @@ div::-webkit-scrollbar-thumb {
     width: 100%;
 }
 #googleSignin{
-  width: 100%;
+  width: 95%;
     background-color: #E24825;
     color: #FFF;
 }
 #facebookSignin{
-  width: 100%;
+  width: 95%;
     background-color: #385499;
     color: #FFF;
 }

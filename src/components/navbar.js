@@ -2,7 +2,6 @@
 // import { LinkContainer } from 'react-router-bootstrap'
 import { Link} from 'react-router-dom';
 // import { IndexLinkContainer } from 'react-router-bootstrap'
-import LoginComponent from './login'
 import React from 'react';
 // Material components
 import PropTypes from 'prop-types';
@@ -16,15 +15,8 @@ import ViewHeadlineIcon from 'material-ui-icons/ViewHeadline';
 import PermMediaIcon from 'material-ui-icons/PermMedia';
 import ContactMailIcon from 'material-ui-icons/ContactMail';
 import AccountBoxIcon from 'material-ui-icons/AccountBox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import Divider from 'material-ui/Divider';
-
-
+import LoginDialogueButton from './../components/login'
 import Dialog, { DialogTitle } from 'material-ui/Dialog';
-import PersonIcon from 'material-ui-icons/Person';
-import AddIcon from 'material-ui-icons/Add';
-import Typography from 'material-ui/Typography';
-import blue from 'material-ui/colors/blue';
 
 const styles = {
   list: {
@@ -46,7 +38,7 @@ const styles = {
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
-    this.  state = {
+    this.state = {
       value: 'eng',
       open: true,
       openLang: false,
@@ -82,7 +74,6 @@ class NavigationBar extends React.Component {
   };
 
     render() {
-      const classes = this.props.classes;
       const sideList = (
         <div>
           <List subheader={<ListSubheader>dfejza</ListSubheader>}>
@@ -119,12 +110,38 @@ class NavigationBar extends React.Component {
       const bottomList = (
         <div>
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <AccountBoxIcon />
-              </ListItemIcon>
-              <ListItemText primary={this.props.store.data.navigation.login[this.props.store.lang]} />
-            </ListItem>
+            {
+            !this.props.authed &&
+             <LoginDialogueButton 
+                onDrawerClose={this.toggleDrawer('right', false)}
+                lang={this.props.store.lang}
+                authed={this.props.authed}
+                contact={this.props.store.data.page2.contact}
+                text={this.props.store.data.navigation.login[this.props.store.lang]} />
+            }
+            {
+            this.props.authed &&
+            <div>
+              <Link to="/chat">
+                <ListItem button>
+                  <ListItemText primary={this.props.store.data.navigation.chat[this.props.store.lang]} />
+                </ListItem>
+              </Link>
+              <Link to="/mangareader">
+                <ListItem button>
+                  <ListItemText primary={this.props.store.data.navigation.mangareader[this.props.store.lang]} />
+                </ListItem>
+              </Link>
+              <Link to="/dashboard">
+                <ListItem button>
+                  <ListItemIcon>
+                    <AccountBoxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={this.props.store.data.navigation.myaccount[this.props.store.lang]} />
+                </ListItem>
+              </Link>
+              </div>
+            }
           </List>
           <Button onClick={this.handleClickOpenLang}>{this.props.store.data.selectorText[this.props.store.lang]} : {this.props.store.data.language[this.props.store.lang]}</Button>
           <LanguageDialogueWrapped
@@ -201,27 +218,4 @@ LanguageDialogue.propTypes = {
 
 const LanguageDialogueWrapped = withStyles(styles)(LanguageDialogue);
 
-
 export default withStyles(styles)(NavigationBar);
-
-
-                // <Menu right>
-                //   <Link to="/"><h3>{this.props.store.data.navigation.home[this.props.store.lang]}</h3></Link>
-                //   <div className="Other">
-                //       <Link to="/chat"><h3>{this.props.store.data.navigation.chat[this.props.store.lang]}</h3></Link>
-                //       <Link to="/mangareader"><h3>{this.props.store.data.navigation.mangareader[this.props.store.lang]}</h3></Link>
-                //       {
-                //       !this.props.authed &&
-                //       <LoginComponent lang={this.props.store.lang} data={this.props.store.data} authed={this.props.authed}/>
-                //       }
-                //       {
-                //       this.props.authed &&
-                //       <Link to="/dashboard"><h3>{this.props.store.data.navigation.myaccount[this.props.lang]}</h3></Link>
-                //       }
-                //       <FormControl componentClass="select" value={this.state.value} onChange={this.handleChange} placeholder="eng">
-                //         <option value="eng">ENG</option>
-                //         <option value="jap">日本語</option>
-                //       </FormControl>
-                //   </div>
-                // </Menu>
-

@@ -15,9 +15,7 @@ import MangaReader from './../scenes/MangaReader'
 import MangaRaderPage from './../scenes/MangaReaderPage'
 import Dashboard from './../scenes/Dashboard'
 import { connect } from 'react-redux'
-
-import styles from './../css/BootstrapOverride.css';
-
+import './../css/BootstrapOverride.css';
 
 class App extends Component {
   state = {
@@ -48,7 +46,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavigationBar store={this.props}/>
+        <NavigationBar authed={this.state.authed} store={this.props}/>
 
 
         <div className="centered-container">
