@@ -1,5 +1,5 @@
 import React from "react";
-import { login, resetPassword, auth, loginWithFacebook } from '../helpers/auth'
+import { login, resetPassword, auth, loginWithFacebook, loginWithGoogle } from '../helpers/auth'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
@@ -73,13 +73,28 @@ class LoginDialogue extends React.Component {
       )
       .catch(e => this.setState(setErrorMsgRegister(e)))
   }
+
   handleFacebookLogin = (e) => {
     e.preventDefault()
     loginWithFacebook().then( ()=>{
-          if(this.props.authed){
-            this.handleRequestClose();
-            this.props.onDrawerClose();
-          }
+          //if(this.props.authed){
+          //  this.handleRequestClose();
+          //  this.props.onDrawerClose();
+          //}
+        }
+      )
+      .catch((error) => {
+      this.setState(setErrorMsgLogin('Invalid username/password.'))
+    })
+  }
+
+  handleGoogleLogin = (e) => {
+    e.preventDefault()
+    loginWithGoogle().then( ()=>{
+          //if(this.props.authed){
+          //  this.handleRequestClose();
+          //  this.props.onDrawerClose();
+          //}
         }
       )
       .catch((error) => {
@@ -136,7 +151,7 @@ class LoginDialogue extends React.Component {
 				</Grid>
 				  <hr /><hr />
 				<Grid item xs={12}>
-				    <Button className={classes.button} id="googleSignin" type="submit">
+				    <Button className={classes.button} id="googleSignin" type="submit" onClick={this.handleSubmitLogin}>
 				      {this.props.contact.google[this.props.lang]}
 				    </Button>
 				</Grid>

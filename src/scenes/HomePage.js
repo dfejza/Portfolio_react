@@ -19,7 +19,7 @@ class HomePage extends React.Component {
 			<div className={classes.root}>
 			      <Grid container className={classes.root} justify='center'
 			            align='stretch'>
-			        <Grid item xs={12} sm={11} md={10} lg={7} xl={7}>
+			        <Grid item xs={12} sm={11} md={10} lg={7}>
 			          <Grid
 			            container
 			            justify='center'
@@ -73,7 +73,7 @@ class AboutMe extends React.Component {
     render() {
         return (
             <div className="AboutMe">
-			 	<p> <b>About Me </b> <br />I've always had a passion residing in all things electronics, be it software or hardware. A desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love.	
+			 	<h3><b>About Me </b></h3><p>I've always had a passion residing in all things electronics, be it software or hardware. A desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love.	
 			 	</p>
 			</div>
         );
@@ -83,21 +83,21 @@ class WhatIDo extends React.Component {
     render() {
         return (
             <div className="WhatIDo" >
-                <p><br /><br />
-                <b>What I Do</b><br />
-				<u>Front-end</u> : 
+                <br />
+                <h3><b>What I Do</b></h3><p>
+				<b>Front-end</b>: 
 				Javascript, ES6, React, AngluarJS, Angluar, VueJS, JQuery<br />
-				<u>Back-end</u> : 
+				<b>Back-end</b>: 
 				NodeJS, APIs, Routing, NoSQL, Python<br />
-				<u>Programming languages</u> : 
+				<b>Programming languages</b>: 
 				C++, C, Java<br />
-				<u>Other</u> : 
+				<b>Other</b>: 
 				Unix, VHDL, MIPS<br />
-				<u>Apps</u> : 
+				<b>Apps</b>: 
 				Ionic<br />
-				<u>Cloud</u> : 
+				<b>Cloud</b>: 
 				Google, Firebase<br />
-				<u>E-Commerce</u> : 
+				<b>E-Commerce</b>: 
 				Shopify
 			 	</p>
 
@@ -109,8 +109,7 @@ class LatestWork extends React.Component {
     render() {
         return (
             <div className="LatestWork">
-                <p><b>Latest Project</b>
-			 	</p>
+                <h3><b>Latest Project</b></h3>
                 	<VickiMorav/>
 			</div>
         );

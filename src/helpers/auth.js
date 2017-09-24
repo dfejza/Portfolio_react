@@ -17,18 +17,25 @@ export function login (email, pw) {
 export function loginWithFacebook () {
   // Sign in using a popup.
   var provider = new firebase.auth.FacebookAuthProvider();
-  // provider.addScope('DisplayName');
+  provider.addScope('user_birthday');
   return firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Facebook Access Token.
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    this.saveUser(user);
   });
 }
 
-export function loginWithGoogle (email, pw) {
-  return firebaseAuth().signInWithEmailAndPassword(email, pw)
+export function loginWithGoogle () {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+  return firebase.auth().signInWithPopup(provider).then(function(result) {
+   // This gives you a Google Access Token.
+   var token = result.credential.accessToken;
+   // The signed-in user info.
+   var user = result.user;
+  });
 }
 
 export function resetPassword (email) {
