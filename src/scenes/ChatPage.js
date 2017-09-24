@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Panel, Button, Form, FormGroup, FormControl, PageHeader} from 'react-bootstrap';
 import postRequests from '../components/post'
+import { firebaseAuth } from '../config/constants'
 import axios from 'axios';
 
 export default class ChatPage extends React.Component{
@@ -31,7 +32,7 @@ export default class ChatPage extends React.Component{
     }
 
     sendMessage(){
-        postRequests.sendChat({"id" :this.state.user, "msg": this.state.msg});
+        postRequests.sendChat({"id" : firebaseAuth().currentUser.email, "msg": this.state.msg});
         this.GetFeed();
         this.setState({msg:""});
     }
@@ -68,10 +69,6 @@ export default class ChatPage extends React.Component{
                     </div>
                 </div>
                 <Form inline>
-                    <FormGroup>
-                      <FormControl className="chatInput" id="chatUserName" value={this.state.user} onChange={this.handleChangeUser} type="text" placeholder="username" />
-                    </FormGroup>
-                    {' '}
                     <FormGroup>
                       <FormControl className="chatInput" id="chatMessageBox" value={this.state.msg} onChange={this.handleChangeMsg} onKeyPress={this.handleKeyPress} type="text" placeholder="message" />
                     </FormGroup>
