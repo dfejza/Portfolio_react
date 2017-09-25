@@ -87,7 +87,7 @@ class WhatIDo extends React.Component {
                 <h3><b>What I Do</b></h3><p>
                 <br />
 				<b>Front-end</b>: 
-				Javascript, ES6, React, AngluarJS, Angluar, VueJS, JQuery<br />
+				ES6, React, AngularJS, Angular, VueJS, JQuery<br />
 				<b>Back-end</b>: 
 				NodeJS, APIs, Routing, NoSQL, Python<br />
 				<b>Programming languages</b>: 

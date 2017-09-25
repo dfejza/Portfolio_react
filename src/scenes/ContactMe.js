@@ -12,25 +12,24 @@ import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import postRequests from '../components/post'
 import Button from 'material-ui/Button';
+import Snackbar from 'material-ui/Snackbar';
+import Slide from 'material-ui/transitions/Slide';
 
 
 const styles = theme => ({
-  root: {
+  root: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
     flexGrow: 1,
-    marginTop: 30,
-  },
-  paper: {
-    padding: 16,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+    marginTop: theme.spacing.unit * 3,
+  }),
 });
 
 
 class ContactMe extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {name: "", email: "", message: ""};
+        this.state = {name: "", email: "", message: "",open: false,direction: "down"};
         
         this.sendMessage = this.sendMessage.bind(this);
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -40,9 +39,7 @@ class ContactMe extends React.Component{
 
     sendMessage(){
         postRequests.sendContact(this.state);
-		this.setState({ name: "" });
-		this.setState({ email: "" });
-		this.setState({ message: "" });
+        this.setState({ open: true });
     }
 
     handleChangeName(e) {
@@ -55,20 +52,28 @@ class ContactMe extends React.Component{
         this.setState({ message: e.target.value });
     }
 
+	handleRequestClose = () => {
+		this.setState({ open: false });
+		this.setState({ name: "" });
+		this.setState({ email: "" });
+		this.setState({ message: "" });
+	};
+
 	render(){
 		const classes = this.props.classes;
 		return(
 			<div className={classes.root}>
 			      <Grid container justify='center' align='stretch'>
 			        <Grid item xs={12} sm={12} md={7}>
-				       <Paper className={classes.root} elevation={4}>
+				       <Paper id="contactMe" className={classes.root} elevation={4}>
+			              <h3 > {this.props.store.data.page2.contact.question[this.props.store.lang]}</h3><br />
 				          <Grid container justify='center' align='stretch'>
 				              <Grid item xs={12} sm={4}>
-			                        <h3 > {this.props.store.data.page2.contact.question[this.props.store.lang]}</h3>
 			                        <br />
-			                        <p><MapIcon /> Kanagawa, Japan</p>
-			                        <p><LocalPhoneIcon /> +1-631-813-6041</p>
-			                        <p><EmailIcon /> dardan.fejza@gmail.com</p> 
+			                        <p><MapIcon />  Kanagawa, Japan</p>
+			                        <p><LocalPhoneIcon />  +1-631-813-6041</p>
+			                        <p><EmailIcon />  dardan.fejza@gmail.com</p> 
+			                        <br />
 				              </Grid>
 				              <Grid item xs={12} sm={7}>
 								<form className={classes.container} noValidate autoComplete="off">
@@ -117,6 +122,22 @@ class ContactMe extends React.Component{
 				        </Paper> 
 		          </Grid>
 		        </Grid>
+		        <Snackbar
+		          open={this.state.open}
+		          anchorOrigin={{ vertical: 'center', horizontal: 'center' }}
+		          onRequestClose={this.handleRequestClose}
+		          transition={<Slide direction="down" />}
+		          autoHideDuration={3000}
+		          SnackbarContentProps={{
+		            'aria-describedby': 'message-id'
+		          }}
+		          message={
+		          	<div style={{ background: "white", color: "black", height:"100%"}}>
+			          	<img style={{width: "50%"}} src={require("./../assets/shake.gif")} alt="242x200"/>
+			          	<span id="message-id">Message has been sent. Thanks.</span>
+			        </div>
+		          }
+		        />
 			</div>
 		);
 	}

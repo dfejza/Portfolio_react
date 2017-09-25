@@ -10,6 +10,16 @@ html, body {
   background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
 }
 
+#contactMe{
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.MuiSnackbarContent-root-362{
+  background-color: white;
+  color: black;
+}
+
 .profileCard {
 /*  width: 30%;*/
   margin: 0 auto;
