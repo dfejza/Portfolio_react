@@ -3,11 +3,13 @@ html *
    font-family: 'Roboto', sans-serif;
 }
 
+body {
+  background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
+}
 
 html, body {
   height: 100%;
   width: 100%; 
-  background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
 }
 
 #contactMe{
@@ -99,7 +101,7 @@ html, body {
 }
 
 .centered-container {
-
+    background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
     display: -webkit-box;
     display: -moz-box;
     display: flex;
