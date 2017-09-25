@@ -7,6 +7,7 @@ html *
 html, body {
   height: 100%;
   width: 100%; 
+  background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
 }
 
 .profileCard {
@@ -88,7 +89,6 @@ html, body {
 }
 
 .centered-container {
-      background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
 
     display: -webkit-box;
     display: -moz-box;

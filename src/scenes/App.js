@@ -8,7 +8,7 @@ import { firebaseAuth } from '../config/constants'
 //Comps
 import NavigationBar from './../components/navbar.js'
 import HomePage from './HomePage'
-import AboutMePage from './../scenes/AboutMePage'
+import ContactMe from './ContactMe.js'
 import PortfolioPage from './../scenes/PortfolioPage'
 import ChatPage from './../scenes/ChatPage'
 import MangaReader from './../scenes/MangaReader'
@@ -52,7 +52,7 @@ class App extends Component {
         <div className="centered-container">
           <Switch >
               <Route exact path='/' render={()=><HomePage store={this.props}/>}/>
-              <Route path='/aboutme' render={()=><AboutMePage store={this.props}/>}/>
+              <Route path='/contact' render={()=><ContactMe store={this.props}/>}/>
               <Route path='/portfolio' render={()=><PortfolioPage store={this.props}/>}/>
               <Route path='/chat' render={()=><ChatPage store={this.props}/>}/>
               <Route exact path='/mangareader' render={()=><MangaReader store={this.props}/>}/>

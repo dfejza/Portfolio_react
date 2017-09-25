@@ -140,7 +140,7 @@ class LoginDialogue extends React.Component {
 				 </Grid>
 
 				<Grid item xs={6}>
-				    <Button className={classes.button} type="submit" value="signup" onClick={this.handleSubmitRegister}>
+				    <Button className={classes.button} type="submit" disabled value="signup" onClick={this.handleSubmitRegister}>
 				      {this.props.contact.signUp[this.props.lang]}
 				    </Button>
 				</Grid>
@@ -151,12 +151,12 @@ class LoginDialogue extends React.Component {
 				</Grid>
 				  <hr /><hr />
 				<Grid item xs={12}>
-				    <Button className={classes.button} id="googleSignin" type="submit" onClick={this.handleSubmitLogin}>
+				    <Button className={classes.button} id="googleSignin" disabled type="submit" onClick={this.handleSubmitLogin}>
 				      {this.props.contact.google[this.props.lang]}
 				    </Button>
 				</Grid>
 				<Grid item xs={12}>
-				    <Button className={classes.button} id="facebookSignin" type="submit" onClick={this.handleFacebookLogin}>
+				    <Button className={classes.button} id="facebookSignin" disabled type="submit" onClick={this.handleFacebookLogin}>
 				      {this.props.contact.facebook[this.props.lang]}
 				    </Button>
 				</Grid>

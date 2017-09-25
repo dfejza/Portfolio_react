@@ -14,36 +14,36 @@ const styles = theme => ({
 
 class HomePage extends React.Component {
     render() {
-    	const classes = this.props.classes;
+      const classes = this.props.classes;
         return (
-			<div className={classes.root}>
-			      <Grid container className={classes.root} justify='center'
-			            align='stretch'>
-			        <Grid item xs={12} sm={11} md={10} lg={7}>
-			          <Grid
-			            container
-			            justify='center'
-			            align='stretch'
-			          >
-							<Grid item xs={12} sm={7} >
-					      		<Paper className={classes.root} elevation={4}>
-									<ProfileCard />
-								</Paper>
-								<Paper className={classes.root} elevation={4}>
-									<AboutMe />
-								</Paper>
-							</Grid>
-							<Grid item xs={12} sm={5}>
-								<Paper style={{height: "76%"}} className={classes.root} elevation={4}><WhatIDo /></Paper>
-								<Paper className={classes.root} elevation={4}><Contact /></Paper>
-							</Grid>
-							<Grid item xs={12} sm={12}>
-								<Paper className={classes.root} elevation={4}><LatestWork /></Paper>
-								
-							</Grid>
-			          </Grid>
-			        </Grid>
-		        </Grid>
+      <div className={classes.root}>
+            <Grid container className={classes.root} justify='center'
+                  align='stretch'>
+              <Grid item xs={12} sm={11} md={10} lg={7}>
+                <Grid
+                  container
+                  justify='center'
+                  align='stretch'
+                >
+              <Grid item xs={12} sm={7} >
+                    <Paper className={classes.root} elevation={4}>
+                  <ProfileCard />
+                </Paper>
+                <Paper className={classes.root} elevation={4}>
+                  <AboutMe />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} sm={5}>
+                <Paper style={{height: "76%"}} className={classes.root} elevation={4}><WhatIDo /></Paper>
+                <Paper className={classes.root} elevation={4}><Contact /></Paper>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <Paper className={classes.root} elevation={4}><LatestWork /></Paper>
+                
+              </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
             </div>
         );
     }
