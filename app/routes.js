@@ -1,4 +1,8 @@
 var fs = require('fs');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+var xoauth2 = require("xoauth2");
+
 // routes ======================================================================  
 // application -------------------------------------------------------------
 // expose the routes to our app with module.exports
@@ -30,13 +34,47 @@ module.exports = function(app) {
 	app.post('/sendtodb', function(req, res) {
 		console.log("receiving");
 		var postData = {
-			date : req.body.date,
+			date : new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
 			ip : req.body.ip,
 			name : req.body.name,
 			email : req.body.email,
 			message : req.body.message
 		}
 		console.log(postData);
+
+		// Setup mailer
+		var transport = nodemailer.createTransport(smtpTransport({
+		  service: process.env.NODEMAILER_SERVICE,
+		    auth:{
+		        xoauth2: xoauth2.createXOAuth2Generator({
+			      user: process.env.NODEMAILER_USER, // Your gmail address.
+			      clientId: process.env.NODEMAILER_CLIENTID,
+			      clientSecret: process.env.NODEMAILER_CLIENTSECRET,
+			      refreshToken: process.env.NODEMAILER_REFRESHTOKEN
+			  })
+		    }
+		}));
+
+	    // Contents of message
+	    var mailOptions = {
+		    from: process.env.NODEMAILER_USER, // sender address
+		    to: "dardan.fejza@gmail.com", // list of receivers
+		    subject: postData.date + " " + postData.name, // Subject line
+		    generateTextFromHTML: true,
+		    text: JSON.stringify(postData) //, // plaintext body
+		    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+		};
+
+		// Send the mail
+		transport.sendMail(mailOptions, function(error, response) {
+		  if (error) {
+		    console.log(error);
+		  } else {
+		    console.log(response);
+		  }
+		  transport.close();
+		});
+
 		// Connect to the db
 		var core = req.db.collection('userinfo');
 		core.insert(postData, function(err,results){
