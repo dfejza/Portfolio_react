@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './../css/App.css';
 
-import {  Route,  Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import { firebaseAuth } from '../config/constants'
 
@@ -9,7 +9,7 @@ import { firebaseAuth } from '../config/constants'
 import NavigationBar from './../components/navbar.js'
 import HomePage from './HomePage'
 import ContactMe from './ContactMe.js'
-import PortfolioPage from './../scenes/PortfolioPage'
+import Projects from './../scenes/Projects'
 import ChatPage from './../scenes/ChatPage'
 import MangaReader from './../scenes/MangaReader'
 import MangaRaderPage from './../scenes/MangaReaderPage'
@@ -18,34 +18,34 @@ import { connect } from 'react-redux'
 import './../css/BootstrapOverride.css';
 
 class App extends Component {
-  state = {
-    authed: false,
-    loading: true,
-  }
+    state = {
+        authed: false,
+        loading: true,
+    }
 
-  componentDidMount () {
-    this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({
-          authed: true,
-          loading: false,
+    componentDidMount() {
+        this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({
+                    authed: true,
+                    loading: false,
+                })
+            } else {
+                this.setState({
+                    authed: false,
+                    loading: false
+                })
+            }
         })
-      } else {
-        this.setState({
-          authed: false,
-          loading: false
-        })
-      }
-    })
-  }
+    }
 
-  componentWillUnmount () {
-    this.removeListener()
-  }
+    componentWillUnmount() {
+        this.removeListener()
+    }
 
-  render() {
-    return (
-      <div>
+    render() {
+        return (
+            <div>
         <NavigationBar authed={this.state.authed} store={this.props}/>
 
 
@@ -53,7 +53,7 @@ class App extends Component {
           <Switch >
               <Route exact path='/' render={()=><HomePage store={this.props}/>}/>
               <Route path='/contact' render={()=><ContactMe store={this.props}/>}/>
-              <Route path='/portfolio' render={()=><PortfolioPage store={this.props}/>}/>
+              <Route path='/projects' render={()=><Projects store={this.props}/>}/>
               <Route path='/chat' render={()=><ChatPage store={this.props}/>}/>
               <Route exact path='/mangareader' render={()=><MangaReader store={this.props}/>}/>
               <Route path='/mangareader/:manga/:volume/:page' render={(props)=><MangaRaderPage {...props} mangaData={this.props.data.mangaDb}/>}/>;
@@ -64,15 +64,15 @@ class App extends Component {
           </Switch>
         </div>
       </div>
-    );
-  }
+        );
+    }
 }
 
 const mapStateToProps = (state) => {
-  return {
-      data: state.data.data,
-      lang: state.data.lang
-  };
+    return {
+        data: state.data.data,
+        lang: state.data.lang
+    };
 };
 
 export default withRouter(connect(mapStateToProps)(App))
