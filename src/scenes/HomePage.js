@@ -3,19 +3,20 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
+import { Link } from 'react-router-dom'
 const styles = theme => ({
-  root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3
-  })
+    root: theme.mixins.gutters({
+        paddingTop: 16,
+        paddingBottom: 16,
+        marginTop: theme.spacing.unit * 3
+    })
 });
 
 class HomePage extends React.Component {
-  render() {
-    const classes = this.props.classes;
-    return (
-      <div className={classes.root}>
+    render() {
+        const classes = this.props.classes;
+        return (
+            <div className={classes.root}>
         <Grid
           container
           className={classes.root}
@@ -53,20 +54,20 @@ class HomePage extends React.Component {
           </Grid>
         </Grid>
       </div>
-    );
-  }
+        );
+    }
 }
 
 HomePage.propTypes = {
-  classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(HomePage);
 
 class ProfileCard extends React.Component {
-  render() {
-    return (
-      <div className="profileCard">
+    render() {
+        return (
+            <div className="profileCard">
         <img
           id="img"
           className="img-circle"
@@ -78,17 +79,17 @@ class ProfileCard extends React.Component {
             {" "}
             <b>Dardan Fejza</b>{" "}
           </h2>
-          <h3> Software & Web Dev </h3>
+          <h3> Software & Web Developer </h3>
           <h4> Tokyo, Japan </h4>
         </div>
       </div>
-    );
-  }
+        );
+    }
 }
 class AboutMe extends React.Component {
-  render() {
-    return (
-      <div className="AboutMe">
+    render() {
+        return (
+            <div className="AboutMe">
         <h3>
           <b>About Me </b>
         </h3>
@@ -101,13 +102,13 @@ class AboutMe extends React.Component {
           the beauty of something you love.
         </p>
       </div>
-    );
-  }
+        );
+    }
 }
 class WhatIDo extends React.Component {
-  render() {
-    return (
-      <div className="WhatIDo">
+    render() {
+        return (
+            <div className="WhatIDo">
         <h3>
           <b>What I Do</b>
         </h3>
@@ -122,36 +123,38 @@ class WhatIDo extends React.Component {
           <b>E-Commerce</b>: Shopify
         </p>
       </div>
-    );
-  }
+        );
+    }
 }
 class LatestWork extends React.Component {
-  render() {
-    return (
-      <div className="LatestWork">
+    render() {
+        return (
+            <div className="LatestWork">
         <h3>
           <b>Latest Project</b>
         </h3>
         <VickiMorav />
       </div>
-    );
-  }
+        );
+    }
 }
 
 class VickiMorav extends React.Component {
-  render() {
-    return (
-      <div>
-        <img width="100%" alt="" src={require("./../assets/VickiMorav.png")} />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+              <Link to="/projects">
+                <img width="100%" alt="" src={require("./../assets/VickiMorav.png")} />
+              </Link> 
+            </div>
+        );
+    }
 }
 
 class Contact extends React.Component {
-  render() {
-    return (
-      <Grid container justify="center" align="stretch">
+    render() {
+        return (
+            <Grid container justify="center" align="stretch">
         <Grid item xs={12}>
           <Grid container justify="center" align="stretch">
             <Grid item xs={2} sm={2}>
@@ -185,6 +188,6 @@ class Contact extends React.Component {
           </Grid>
         </Grid>
       </Grid>
-    );
-  }
+        );
+    }
 }

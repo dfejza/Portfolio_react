@@ -12,13 +12,15 @@ import Tooltip from 'material-ui/Tooltip';
 
 const styles = theme => ({
     root: theme.mixins.gutters({
-        paddingTop: 32,
+        paddingTop: 64,
         paddingBottom: 32,
         marginTop: theme.spacing.unit * 3
     }),
     card: {
         maxWidth: 400,
-        marginTop: 16
+        minHeight: 300,
+        marginTop: 32,
+        marginRight: 16
     },
     media: {
         height: 150,
@@ -49,19 +51,16 @@ class Projects extends React.Component {
                 justify="center"
                 align="stretch"
               >
-                <Grid item xs={12} sm={11} md={9} lg={7}>
+                <Grid item xs={12} sm={11} md={9} lg={8}>
                   <Grid container align="stretch">
-                    <Grid item sm={12} md={4}>
+                    <Grid item sm={12} md={6}>
                       <ProjectCardVickiMoravWrapped />
                     </Grid> 
-                    <Grid item sm={12} md={4}>
+                    <Grid item sm={12} md={6}>
                       <ProjectCardWebsiteWrapped />
                     </Grid>
-                    <Grid item sm={12} md={4}>
-                      <ProjectCardVickiMoravWrapped />
-                    </Grid> 
-                    <Grid item sm={12} md={4}>
-                      <ProjectCardVickiMoravWrapped />
+                    <Grid item sm={12} md={6}>
+                      <ProjectCardChallongerWrapped />
                     </Grid> 
                   </Grid>
                 </Grid>
@@ -104,9 +103,10 @@ class ProjectCardVickiMorav extends React.Component {
                   <CardContent>
                     <ul>
                       <li>Written in Angular</li>
+                      <li>Shoppify backend</li>
                       <li>Ionic Framework</li>
+                      <li>GraphQL, Redux</li>
                       <li>Developed & designed the entire application</li>
-                      <li>Redux state management</li>
                     </ul>
                   </CardContent>
                 </Collapse>
@@ -159,10 +159,58 @@ class ProjectCardWebsite extends React.Component {
         );
     }
 }
+
+class ProjectCardChallonger extends React.Component {
+    state = { expanded: false };
+
+    handleExpandClick = () => {
+        this.setState({ expanded: !this.state.expanded });
+    };
+    render() {
+        const classes = this.props.classes;
+        return (
+            <Tooltip
+              title="Expand"
+              placement="top"
+            >
+              <Card className={classes.card} onClick={this.handleExpandClick}>
+                <Collapse in={!this.state.expanded} transitionDuration="auto" unmountOnExit>
+                  <CardMedia
+                    className={classes.media}
+                    image={require("./../assets/challonger.png")}
+                    title="Contemplative Reptile"
+                  />
+                </Collapse>
+                <CardContent>
+                  <Typography type="headline" component="h2">
+                    Challonger
+                  </Typography>
+                  <Typography component="p">
+                    A Tournament bracket simulator, providing a descriptive and easy to use interface for each match. Written in C++ with QT
+                  </Typography>
+                </CardContent>
+                <Collapse in={this.state.expanded} transitionDuration="auto" unmountOnExit>
+                  <CardContent>
+                    <ul>
+                      <li>C++ with QT GUI</li>
+                      <li>Backend: challonge.com, a tournament management website.</li>
+                      <li>Uses API calls via CURL to interface with the backend.</li>
+                      <li>Work In Progress</li>
+                    </ul>
+                  </CardContent>
+                </Collapse>
+              </Card>
+            </Tooltip>
+        );
+    }
+}
+
+
 Projects.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
 const ProjectCardVickiMoravWrapped = withStyles(styles)(ProjectCardVickiMorav);
 const ProjectCardWebsiteWrapped = withStyles(styles)(ProjectCardWebsite);
+const ProjectCardChallongerWrapped = withStyles(styles)(ProjectCardChallonger);
 export default withStyles(styles)(Projects);
