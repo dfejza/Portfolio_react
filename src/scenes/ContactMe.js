@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
-import { FormLabel, FormControlLabel } from "material-ui/Form";
-import Radio, { RadioGroup } from "material-ui/Radio";
 import Paper from "material-ui/Paper";
 import MapIcon from "material-ui-icons/Map";
 import LocalPhoneIcon from "material-ui-icons/LocalPhone";
@@ -74,24 +72,19 @@ class ContactMe extends React.Component {
 							className={classes.root}
 							elevation={4}
 						>
-							<h3>
-								{" "}
-								{
-									this.props.store.data.page2.contact
-										.question[this.props.store.lang]
-								}
-							</h3>
+							<h3> {this.props.local.header[this.props.lang]}</h3>
 							<br />
-							<p>
-								{" "}
-								Or maybe a comment? Fill out the fields and I'll
-								respond to you via the provided email.
-							</p>
+							<p> {this.props.local.body[this.props.lang]}</p>
 							<Grid container justify="center" align="stretch">
 								<Grid item xs={12} sm={4}>
 									<br />
 									<p>
-										<MapIcon /> Kanagawa, Japan
+										<MapIcon />{" "}
+										{
+											this.props.local.location[
+												this.props.lang
+											]
+										}
 									</p>
 									<p>
 										<LocalPhoneIcon /> +1-631-813-6041
@@ -112,10 +105,8 @@ class ContactMe extends React.Component {
 												<TextField
 													id="name"
 													label={
-														this.props.store.data
-															.page2.contact.name[
-															this.props.store
-																.lang
+														this.props.local.name[
+															this.props.lang
 														]
 													}
 													className={
@@ -132,11 +123,8 @@ class ContactMe extends React.Component {
 												<TextField
 													id="name"
 													label={
-														this.props.store.data
-															.page2.contact
-															.email[
-															this.props.store
-																.lang
+														this.props.local.email[
+															this.props.lang
 														]
 													}
 													className={
@@ -154,11 +142,9 @@ class ContactMe extends React.Component {
 												<TextField
 													id="name"
 													label={
-														this.props.store.data
-															.page2.contact
+														this.props.local
 															.comment[
-															this.props.store
-																.lang
+															this.props.lang
 														]
 													}
 													className={
@@ -179,7 +165,11 @@ class ContactMe extends React.Component {
 											id="submitComment"
 											onClick={this.sendMessage}
 										>
-											Submit
+											{
+												this.props.local.FormSubmit[
+													this.props.lang
+												]
+											}
 										</Button>
 									</form>
 								</Grid>
@@ -219,7 +209,9 @@ class ContactMe extends React.Component {
 									</td>
 								</tr>
 							</table>
-							<h3 id="message-id">Sending message</h3>
+							<h3 id="message-id">
+								{this.props.local.sendingtext[this.props.lang]}
+							</h3>
 						</div>
 					}
 				/>

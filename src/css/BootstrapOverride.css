@@ -1,31 +1,31 @@
-html *
-{
-   font-family: 'Roboto', sans-serif;
+html * {
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  width: 100%; 
+  width: 100%;
 }
 
-#contactMe{
+#contactMe {
   padding-top: 3em;
   padding-bottom: 3em;
 }
 
-.MuiSnackbarContent-root-362{
+.MuiSnackbarContent-root-362 {
   background-color: white;
   color: black;
 }
 
 .profileCard {
-/*  width: 30%;*/
+  /*  width: 30%;*/
   margin: 0 auto;
-/*  margin-top: 10%;*/
+  /*  margin-top: 10%;*/
   display: -webkit-box;
   display: -moz-box;
   display: flex;
@@ -55,19 +55,15 @@ html, body {
   margin: 0;
 }
 
-
-
-.LatestWork{
-/*  width: 30%;*/
+.LatestWork {
+  /*  width: 30%;*/
   margin: 0 auto;
 }
 
-.AboutMeGridLeftSide{
-
+.AboutMeGridLeftSide {
 }
 
-
-#AboutMeGrid{
+#AboutMeGrid {
   margin-top: 10%;
 }
 
@@ -77,74 +73,80 @@ html, body {
   bottom: 0;
   left: 0;
   text-align: center;
-  height: 50px
+  height: 50px;
 }
 
-.headerMe{
+.headerMe {
   margin: 0 auto;
   text-align: center;
 }
 
-.navbar{
-  background-color: rgba(0, 0, 0, 0.00);
+.navbar {
+  background-color: rgba(0, 0, 0, 0);
   color: #000000;
-  min-height: 40px ;
+  min-height: 40px;
 }
 
-.navbar-brand{
+.navbar-brand {
   color: rgba(66, 66, 66, 0.29) !important;
 }
 .navbar-inverse {
   background-image: none;
-  border-color:rgba(8, 8, 8, 0);
-  min-height: 40px ;
+  border-color: rgba(8, 8, 8, 0);
+  min-height: 40px;
 }
 
 .centered-container {
-    background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
-    display: -webkit-box;
-    display: -moz-box;
-    display: flex;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: distribute;
-    -moz-box-pack: distribute;
-    box-pack: distribute;
-    -webkit-justify-content: space-around;
-    -moz-justify-content: space-around;
-    -ms-justify-content: space-around;
-    -o-justify-content: space-around;
-    justify-content: space-around;
-    -ms-flex-pack: distribute;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    box-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -o-align-items: center;
-    align-items: center;
-    -ms-flex-align: center;
-    height: 100%;
+  background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  box-pack: distribute;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+  -ms-flex-pack: distribute;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  height: 100%;
 }
 
 .img-circle {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
-p, .paragraph {
-  font-family: 'Roboto', sans-serif;
-    font-size: 1.8rem;
-    line-height: 2.4rem;
-    margin-bottom: 2.0rem;
-    margin-top: 0;
+p,
+.paragraph {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
 }
 
-.h1, .h2, .h3, h1, h2, h3 {
-    margin-top: 10px;
-    margin-bottom: 5px;
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 /*.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
@@ -153,49 +155,53 @@ p, .paragraph {
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.10);
 }*/
 
-.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:hover{
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-nav > li > a:hover {
   color: rgba(0, 0, 0, 0.46);
 }
 /*On dropdown menus, when a item is selected the color of the font becomes unreadable. Change color*/
-.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
   color: #313131;
 }
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
   color: #000;
   /* font-weight: bold; */
-  background-color: rgba(227, 227, 227, 0.00);
+  background-color: rgba(227, 227, 227, 0);
   background-image: none;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-bottom: 1px solid;
 }
 
-.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
   text-shadow: none;
   color: #666666;
 }
 
-.panel-body{
+.panel-body {
   word-wrap: break-word;
-  background-color: #FDFDFD;
+  background-color: #fdfdfd;
 }
 @media (min-width: 800px) {
   /* Desktop*/
-  .container{
+  .container {
     /*padding-bottom: 2%;*/
   }
-  #chatMessageBox{
+  #chatMessageBox {
     width: 600px;
   }
-
 }
-  #chatUserName{
-    width: 100px;
-  }
+#chatUserName {
+  width: 100px;
+}
 
 @media (max-width: 800px) {
   /* Remove the left and right borders in mobile */
-  .container{
+  .container {
     margin-left: 0%;
     margin-right: 0%;
     margin-top: 2%;
@@ -208,11 +214,11 @@ p, .paragraph {
     border-right: none !important;
   }
 
-  .ListBottom{
+  .ListBottom {
     color: grey;
   }
 
-  #AboutMeGrid{
+  #AboutMeGrid {
     border-bottom: none !important;
     border-top: none !important;
   }
@@ -222,57 +228,55 @@ p, .paragraph {
   }
 
   /* Remove the page indicator underline */
-  .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  .navbar-inverse .navbar-nav > .active > a,
+  .navbar-inverse .navbar-nav > .active > a:focus,
+  .navbar-inverse .navbar-nav > .active > a:hover {
     border-bottom: 0px solid;
   }
-  
 
   /* Color of the three bars in mobile */
   .navbar-inverse .navbar-toggle .icon-bar {
-      background-color: #131212;
+    background-color: #131212;
   }
-  #imagefloatleft{
-    width: 100% !important; 
+  #imagefloatleft {
+    width: 100% !important;
   }
-  
 }
 
-.card-grid{
+.card-grid {
   /* margin-left: 20%;
   margin-right: 20%; */
   margin-top: 4%;
 }
 
-#imagefloatleft{
+#imagefloatleft {
   width: 350px;
-
 }
-#imgHolderAboutMe{
+#imgHolderAboutMe {
   float: left;
   padding-left: 10px;
   padding-right: 20px;
   padding-bottom: 5px;
 }
 
-
-#RepoCard{
+#RepoCard {
   max-width: 400px;
   display: inline-block;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#RepoHeader{
+#RepoHeader {
   display: table;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#ProjectListingsHeader{
+#ProjectListingsHeader {
   text-align: center;
 }
 
-#githubevents{
+#githubevents {
   height: 500px !important;
 }
 /* .panel-body {
@@ -288,7 +292,7 @@ p, .paragraph {
   opacity: 0.8;
 }
 
-#floatrightmail{
+#floatrightmail {
   height: 50px;
   width: 50px;
   float: right;
@@ -300,140 +304,136 @@ p, .paragraph {
   border-bottom: 1px solid #ded5d5;
 }
 
-#submitComment{
+#submitComment {
   float: right;
 }
 
-#floatRight{
+#floatRight {
   float: right;
 }
-#floatLeft{
+#floatLeft {
   float: left;
 }
 
-
-
 /*Chat page stuff*/
-#inlineMessage{
+#inlineMessage {
   display: inline-block;
 }
 
-#chat{
+#chat {
   max-height: 400px;
   overflow: auto;
 }
 
-.chatInput{
-  background-color: rgba(0, 0, 0, 0.00);
-  outline:0px !important;
-  -webkit-appearance:none;
+.chatInput {
+  background-color: rgba(0, 0, 0, 0);
+  outline: 0px !important;
+  -webkit-appearance: none;
   border: 0px solid #ccc;
   border-style: solid;
   border-bottom: 1px solid grey;
   border-radius: 0px;
   -webkit-box-shadow: none;
-  box-shadow: none; 
+  box-shadow: none;
   outline: none;
 }
 
 /* This is for the underconstruction notifier */
 #terminalText {
-	font-family: monospace;
-	font-size: 1em;
+  font-family: monospace;
+  font-size: 1em;
 }
 #terminalText:after {
-	content:"_";
-	opacity: 0;
-	animation: cursor 1s infinite;
+  content: "_";
+  opacity: 0;
+  animation: cursor 1s infinite;
 }
 @keyframes cursor {
-	0% {
-		opacity: 0;
-	}
-	40% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	90% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /*Scrollbar Style*/
 div::-webkit-scrollbar {
-    width: .5em;
+  width: 0.5em;
 }
- 
+
 div::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
- 
+
 div::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
 
-#mangaSelection{
+#mangaSelection {
   max-width: 540px;
   margin: 0 auto;
 }
 .carousel-indicators {
-  visibility:hidden;
+  visibility: hidden;
 }
 
-#mangaPageDiv{
+#mangaPageDiv {
   margin: 0 auto;
   text-align: center;
 }
 
-#textAlignCenter{
+#textAlignCenter {
   text-align: center;
 }
 
-#mangaPage{
+#mangaPage {
   width: 100%;
   cursor: pointer;
 }
 
-#loading{
+#loading {
   width: 100%;
   cursor: wait;
 }
-#loaded{
+#loaded {
   width: 100%;
   cursor: pointer;
 }
 
 #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
 }
 
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-    color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+#text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
-
-
 
 /* Position and sizing of burger button */
 .bm-burger-button {
@@ -446,85 +446,50 @@ div::-webkit-scrollbar-thumb {
 
 /* Color/shape of Login Dropdown */
 
-.popover{
-    max-width: 100% !important;
-    width: 320px;
-    opacity: .9;
+.popover {
+  max-width: 100% !important;
+  width: 320px;
+  opacity: 0.9;
 }
-.loginMenu{
+.loginMenu {
   max-width: 320px !important;
 }
 
-#regSignin{
-    width: 100%;
+#regSignin {
+  width: 100%;
 }
-#googleSignin{
+#googleSignin {
   width: 95%;
-    background-color: #E24825;
-    color: #FFF;
+  background-color: #e24825;
+  color: #fff;
 }
-#facebookSignin{
+#facebookSignin {
   width: 95%;
-    background-color: #385499;
-    color: #FFF;
+  background-color: #385499;
+  color: #fff;
 }
-.popover>.arrow, .popover>.arrow:after {
+.popover > .arrow,
+.popover > .arrow:after {
   visibility: hidden;
 }
 
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 95%;
-  top: 94%;
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
 }
 
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
-}
-
-/* General sidebar styles */
-.bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+.Other {
   text-align: right;
-}
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.Other{
-    text-align: right;
-    position: absolute;
-    /* top: 75%; */
-    bottom: 1em;
-    right: 1em;
+  position: absolute;
+  /* top: 75%; */
+  bottom: 1em;
+  right: 1em;
 }

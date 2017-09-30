@@ -3,20 +3,20 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 const styles = theme => ({
-    root: theme.mixins.gutters({
-        paddingTop: 16,
-        paddingBottom: 16,
-        marginTop: theme.spacing.unit * 3
-    })
+  root: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3
+  })
 });
 
 class HomePage extends React.Component {
-    render() {
-        const classes = this.props.classes;
-        return (
-            <div className={classes.root}>
+  render() {
+    const classes = this.props.classes;
+    return (
+      <div className={classes.root}>
         <Grid
           container
           className={classes.root}
@@ -27,10 +27,13 @@ class HomePage extends React.Component {
             <Grid container justify="center" align="stretch">
               <Grid item xs={12} sm={7}>
                 <Paper className={classes.root} elevation={4}>
-                  <ProfileCard />
+                  <ProfileCard
+                    lang={this.props.lang}
+                    local={this.props.local}
+                  />
                 </Paper>
                 <Paper className={classes.root} elevation={4}>
-                  <AboutMe />
+                  <AboutMe lang={this.props.lang} local={this.props.local} />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={5}>
@@ -39,35 +42,35 @@ class HomePage extends React.Component {
                   className={classes.root}
                   elevation={4}
                 >
-                  <WhatIDo />
+                  <WhatIDo lang={this.props.lang} local={this.props.local} />
                 </Paper>
                 <Paper className={classes.root} elevation={4}>
-                  <Contact />
+                  <Contact lang={this.props.lang} local={this.props.local} />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={12}>
                 <Paper className={classes.root} elevation={4}>
-                  <LatestWork />
+                  <LatestWork lang={this.props.lang} local={this.props.local} />
                 </Paper>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </div>
-        );
-    }
+    );
+  }
 }
 
 HomePage.propTypes = {
-    classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(HomePage);
 
 class ProfileCard extends React.Component {
-    render() {
-        return (
-            <div className="profileCard">
+  render() {
+    return (
+      <div className="profileCard">
         <img
           id="img"
           className="img-circle"
@@ -79,38 +82,34 @@ class ProfileCard extends React.Component {
             {" "}
             <b>Dardan Fejza</b>{" "}
           </h2>
-          <h3> Software & Web Developer </h3>
-          <h4> Tokyo, Japan </h4>
+          <h3> {this.props.local.job[this.props.lang]} </h3>
+          <h4> {this.props.local.location[this.props.lang]} </h4>
         </div>
       </div>
-        );
-    }
+    );
+  }
 }
 class AboutMe extends React.Component {
-    render() {
-        return (
-            <div className="AboutMe">
+  render() {
+    return (
+      <div className="AboutMe">
         <h3>
-          <b>About Me </b>
+          <b>{this.props.local.aboutmetitle[this.props.lang]}</b>
         </h3>
         <p>
-          <br />I've always had a passion residing in all things electronics, be
-          it software or hardware. A desire has driven me to learn, create, and
-          improve in anything seen fit (from programming languages to actual
-          language learning). Even after a full time job as a Software Engineer,
-          I still find myself immersed in programming in my free time. That's
-          the beauty of something you love.
+          <br />
+          {this.props.local.aboutmecontent[this.props.lang]}
         </p>
       </div>
-        );
-    }
+    );
+  }
 }
 class WhatIDo extends React.Component {
-    render() {
-        return (
-            <div className="WhatIDo">
+  render() {
+    return (
+      <div className="WhatIDo">
         <h3>
-          <b>What I Do</b>
+          <b>{this.props.local.whatido[this.props.lang]}</b>
         </h3>
         <p>
           <br />
@@ -123,38 +122,42 @@ class WhatIDo extends React.Component {
           <b>E-Commerce</b>: Shopify
         </p>
       </div>
-        );
-    }
+    );
+  }
 }
 class LatestWork extends React.Component {
-    render() {
-        return (
-            <div className="LatestWork">
+  render() {
+    return (
+      <div className="LatestWork">
         <h3>
-          <b>Latest Project</b>
+          <b>{this.props.local.latestprojects[this.props.lang]}</b>
         </h3>
         <VickiMorav />
       </div>
-        );
-    }
+    );
+  }
 }
 
 class VickiMorav extends React.Component {
-    render() {
-        return (
-            <div>
-              <Link to="/projects">
-                <img width="100%" alt="" src={require("./../assets/VickiMorav.png")} />
-              </Link> 
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Link to="/projects">
+          <img
+            width="100%"
+            alt=""
+            src={require("./../assets/VickiMorav.png")}
+          />
+        </Link>
+      </div>
+    );
+  }
 }
 
 class Contact extends React.Component {
-    render() {
-        return (
-            <Grid container justify="center" align="stretch">
+  render() {
+    return (
+      <Grid container justify="center" align="stretch">
         <Grid item xs={12}>
           <Grid container justify="center" align="stretch">
             <Grid item xs={2} sm={2}>
@@ -188,6 +191,6 @@ class Contact extends React.Component {
           </Grid>
         </Grid>
       </Grid>
-        );
-    }
+    );
+  }
 }

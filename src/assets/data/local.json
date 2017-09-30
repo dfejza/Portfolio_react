@@ -1,23 +1,123 @@
 {
-    "homePage":
-    {
-        "job": ["Software & Web Developer", "Software & Web Developer"],
+    "homePage": {
+        "job": ["Software & Web Developer", "ソフトウェアエンジニア & ウェブデベロッパー"],
         "location": ["Tokyo, Japan", "神奈川県, 日本"],
         "aboutmetitle": ["About Me", "自己紹介"],
-        "aboutmecontent": ["I've always had a passion residing in all things electronics, be it software or hardware. A desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love.", "私はいつも、ソフトウェアやハードウェアであれ、エレクトロニクスのすべてに存在する情熱を持っていました。私は、プログラミング言語から実際の言語学習に至るまで、あらゆることを学び、創造し、向上させたいと願っています。ソフトウェアエンジニアとしてのフルタイムの仕事の後でも、私は自由な時間にプログラミングに没頭していることがまだあります。それはあなたが愛するものの美しさです。"],
+        "aboutmecontent": [
+            "I've always had a passion residing in all things electronics, be it software or hardware. A desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a findull time job as a Software Engineer, I still find myself immersed in programming in my free time. That's the beauty of something you love.",
+            "私はいつも、ソフトウェアやハードウェアであれ、エレクトロニクスのすべてに存在する情熱を持っていました。私は、プログラミング言語から実際の言語学習に至るまで、あらゆることを学び、創造し、向上させたいと願っています。ソフトウェアエンジニアとしてのフルタイムの仕事の後でも、私は自由な時間にプログラミングに没頭していることがまだあります。それはあなたが愛するものの美しさです。"
+        ],
         "whatido": ["What I Do", "資格"],
         "latestprojects": ["Latest Project", "最近のプロジェクト"]
     },
-    "projectsPage":
-    {
-
+    "projectsPage": [
+        {
+            "title": ["VickiMorav", "VickiMorav"],
+            "image": "vickimoravprojectcard.png",
+            "subtitle": [
+                "eCommerce mobile app for Android/IOS. Written in Angular, deployed on both Google Play Store and IOS store.",
+                "Android / IOSのコマースモバイルアプリ。 Angleで書かれ、Google PlayストアとIOSストアの両方にデプロイされています。"
+            ],
+            "detailedlist": [
+                ["Written in Angular", "Angular言語"],
+                ["Shoppify backend", "Shoppify バックエンド"],
+                ["Ionic Framework", "Ionic フレームワーク"],
+                ["GraphQL, Redux", "GraphQL, Redux"],
+                [
+                    "Developed & designed the entire application",
+                    "アプリケーション全体を開発して設計しました"
+                ]
+            ]
+        },
+        {
+            "title": ["Website Portfolio", "Website Portfolio"],
+            "image": "websiteprojectcard.png",
+            "subtitle": [
+                "Presentation of myself & accomplishments, as well as an interface to learn web technologies.",
+                "自分自身と成果の発表、ウェブテクノロジーを学ぶためのインターフェース."
+            ],
+            "detailedlist": [
+                [
+                    "Frontend: React, Redux, Materials",
+                    "フレームワーク: React, Redux, Materials"
+                ],
+                [
+                    "Backend: Firebase, Nodejs (Express)",
+                    "バックエンド: Firebase, Nodejs (Express)"
+                ],
+                [
+                    "Platform for sideprojects (login to see them)",
+                    "サイドプロジェクトのためのプラットフォーム（それらを見るためのログイン）"
+                ]
+            ]
+        },
+        {
+            "title": ["Challonger", "Challonger"],
+            "image": "challonger.png",
+            "subtitle": [
+                "A Tournament bracket simulator, providing a descriptive and easy to use interface for each match. Written in C++ with QT.",
+                "トーナメントブラケットシミュレーターで、マッチごとに説明的で使いやすいインターフェースを提供します。 QTでC ++で書かれています。"
+            ],
+            "detailedlist": [
+                ["C++ with QT GUI", "QT GUIを使用したC ++"],
+                [
+                    "Backend: challonge.com, a tournament management website.",
+                    "バックエンド：challonge.com、トーナメント管理ウェブサイト"
+                ],
+                [
+                    "Uses API calls via CURL to interface with the backend.",
+                    "CURLを介してAPI呼び出しを使用してバックエンドとのインタフェースをとります。"
+                ],
+                ["Work In Progress", "進行中の作業"]
+            ]
+        }
+    ],
+    "contactPage": {
+        "header": [
+            "Have a question?",
+            "\u8cea\u554f\u3042\u308a\u307e\u3059\u304b\uff1f"
+        ],
+        "body": [
+            "Or maybe a comment? Fill out the fields and I'll respond to you via the provided email.",
+            "それともコメントですか？フィールドに記入してください。返信します"
+        ],
+        "location": ["Tokyo, Japan", "神奈川県, 日本"],
+        "email": ["Email", "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9"],
+        "FormSubmit": ["Send", "\u9001\u308b"],
+        "name": ["Name", "\u540d\u524d"],
+        "sendingtext": ["Sending Message...", "送信メッセージ"],
+        "comment": ["Comment", "\u30b3\u30e1\u30f3\u30c8"]
     },
-    "contactPage":
-    {
-
+    "logincomponent": {
+        "email": ["Email", "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9"],
+        "question": [
+            "Have a question?",
+            "\u8cea\u554f\u3042\u308a\u307e\u3059\u304b\uff1f"
+        ],
+        "FormSubmit": ["Send", "\u9001\u308b"],
+        "name": ["Name", "\u540d\u524d"],
+        "header": ["Contact", "\u9023\u7d61"],
+        "comment": ["Comment", "\u30b3\u30e1\u30f3\u30c8"],
+        "password": ["Password", "パスワード"],
+        "signIn": ["Sign In", "サインイン"],
+        "google": ["Sign in with Google", "Googleでサインイン"],
+        "facebook": ["Sign in with Facebook", "Facebookでサインイン"],
+        "signUp": ["Sign Up", "サインアップ"],
+        "login": ["Login", "ログイン"]
     },
-    "loginComponent":
-    {
-
+    "navbarcomponent": {
+        "selectorText": ["Language ", "\u8a00\u8a9e "],
+        "language": ["English", "日本語"],
+        "selectlanguageheader": ["Select a language", "言語を選んでください"],
+        "home": ["Home", "\u30db\u30fc\u30e0"],
+        "projects": ["Projects", "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8"],
+        "aboutme": ["About Me", "\u7d39\u4ecb"],
+        "login": ["Login", "\u30ed\u30b0\u30a4\u30f3"],
+        "chat": ["Chat", "\u30c1\u30e3\u30c3\u30c8"],
+        "mangareader": ["Manga Reader", "\u30de\u30f3\u30ac\u3092\u8aad\u3080"],
+        "snake": ["Snake (game)", "\u30d8\u30d3\u30b2\u30fc\u30e0"],
+        "sideprojects": ["Other", "他"],
+        "contact": ["Contact Me", "\u9023\u7d61"],
+        "myaccount": ["Account", "マイアカウント"]
     }
 }
