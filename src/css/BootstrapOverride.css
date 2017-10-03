@@ -400,6 +400,12 @@ div::-webkit-scrollbar-thumb {
 #mangaPage {
   width: 100%;
   cursor: pointer;
+  pointer-events: none;
+}
+#mangaPage:active {
+  width: 100%;
+  cursor: move;
+  pointer-events: none;
 }
 
 #loading {
@@ -435,17 +441,7 @@ div::-webkit-scrollbar-thumb {
   -ms-transform: translate(-50%, -50%);
 }
 
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
-}
-
 /* Color/shape of Login Dropdown */
-
 .popover {
   max-width: 100% !important;
   width: 320px;
@@ -474,20 +470,23 @@ div::-webkit-scrollbar-thumb {
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 3s linear;
+  animation: App-logo-spin infinite 15s linear;
 }
 
 @keyframes App-logo-spin {
   0% {
     transform: rotate(0deg);
   }
-  25% {
-    transform: rotate(10deg);
-  }
-  50% {
+  80% {
     transform: rotate(0deg);
   }
-  75% {
+  85% {
+    transform: rotate(10deg);
+  }
+  90% {
+    transform: rotate(0deg);
+  }
+  95% {
     transform: rotate(-10deg);
   }
   100% {
@@ -501,4 +500,41 @@ div::-webkit-scrollbar-thumb {
   /* top: 75%; */
   bottom: 1em;
   right: 1em;
+}
+
+.projectGithub {
+  float: right;
+  position: relative;
+}
+
+#imageCropping {
+  pointer-events: none;
+  cursor: crosshair;
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  width: 0;
+  box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);
+  border: 3px dotted red;
+  z-index: 2;
+  &--disabled {
+    cursor: inherit;
+  }
+  &__image {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+#cropConfirmation {
+  cursor: crosshair;
+  position: absolute;
+  display: none;
+  background-color: white;
+  margin-top: 10px;
+  z-index: 3;
 }

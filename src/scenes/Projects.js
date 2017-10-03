@@ -103,6 +103,14 @@ class ProjectCard extends React.Component {
                   <li key={index}>{project[this.props.lang]}</li>
                 ))}
               </ul>
+              <a href={this.props.local.link}>
+                <img
+                  className="projectGithub"
+                  width={28}
+                  alt=""
+                  src={require("./../assets/github.svg")}
+                />
+              </a>
             </CardContent>
           </Collapse>
         </Card>
