@@ -1,11 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { findDOMNode } from "react-dom";
 import { Pagination } from "react-bootstrap";
-import Popover from "material-ui/Popover";
 import { withStyles } from "material-ui/styles";
 import Button from "material-ui/Button";
-import Typography from "material-ui/Typography";
+import CreateCardWrapped from "./../components/CreateCard";
 
 export default class MangaReaderPage extends React.Component {
 	constructor(props) {
@@ -16,7 +14,9 @@ export default class MangaReaderPage extends React.Component {
 			volume: this.props.match.params.volume,
 			page: this.props.match.params.page,
 			pageCount: 100,
-			volumeCount: 1
+			volumeCount: 1,
+			open: false,
+			cardImage: null
 		};
 		this.incrementPage = this.incrementPage.bind(this);
 		this.handleSelect = this.handleSelect.bind(this);
@@ -52,6 +52,18 @@ export default class MangaReaderPage extends React.Component {
 		);
 	}
 
+	handleClickOpen = () => {
+		this.setState({
+			open: true
+		});
+	};
+
+	handleRequestClose = value => {
+		this.setState({
+			open: false
+		});
+	};
+
 	incrementPage() {
 		var nextPage = parseInt(this.state.page, 10) + 1;
 		if (nextPage <= this.state.pageCount) {
@@ -70,6 +82,12 @@ export default class MangaReaderPage extends React.Component {
 				"/" +
 				this.state.page
 		);
+	}
+
+	setCardImage(iCardImage) {
+		this.setState({ cardImage: iCardImage }, () => {
+			this.handleClickOpen();
+		});
 	}
 
 	render() {
@@ -94,8 +112,14 @@ export default class MangaReaderPage extends React.Component {
 						volume={this.state.volume}
 						page={this.state.page}
 						parentClick={this.incrementPage}
+						storeCardImage={this.setCardImage.bind(this)}
 					/>
 				</div>
+				<CreateCardWrapped
+					cardImage={this.state.cardImage}
+					open={this.state.open}
+					onRequestClose={this.handleRequestClose}
+				/>
 			</div>
 		);
 	}
@@ -117,21 +141,10 @@ class MangaSinglePage extends React.Component {
 			cropping: false,
 			cropConfirmDialogue: false
 		};
+		this.cropAfterLoad = this.cropAfterLoad.bind(this);
 	}
 
-	componentDidMount() {
-		var node = ReactDOM.findDOMNode(this);
-		const rect = node.getBoundingClientRect();
-		const docEl = document.documentElement;
-		const rectTop = rect.top + window.pageYOffset - docEl.clientTop;
-		const rectLeft = rect.left + window.pageXOffset - docEl.clientLeft;
-
-		this.setState({
-			imgXOffset: rectTop,
-			imgYOffset: rectLeft,
-			anchorEl: findDOMNode(this.crop)
-		});
-	}
+	componentDidMount() {}
 
 	changeLoading() {
 		this.setState({ imageStatus: "loading" });
@@ -141,6 +154,17 @@ class MangaSinglePage extends React.Component {
 	handleImageLoaded() {
 		this.setState({ imageStatus: "loaded" });
 		document.getElementById("overlay").style.display = "none";
+
+		const rect = this.refs.mangaslide.getBoundingClientRect();
+		const docEl = document.documentElement;
+		const rectTop = rect.top + window.pageYOffset - docEl.clientTop;
+		const rectLeft = rect.left + window.pageXOffset - docEl.clientLeft;
+
+		this.setState({
+			imgXOffset: rectLeft,
+			imgYOffset: rectTop,
+			anchorEl: findDOMNode(this.crop)
+		});
 	}
 
 	handleImageErrored() {
@@ -157,7 +181,6 @@ class MangaSinglePage extends React.Component {
 	}
 
 	onclick(e) {
-		console.log(e.pageX);
 		if (this.state.cropping) {
 			if (
 				e.pageX < this.state.x1 ||
@@ -213,9 +236,47 @@ class MangaSinglePage extends React.Component {
 		this.setState({
 			x2: e.pageX,
 			y2: e.pageY,
+			height: e.pageY - this.state.y1,
+			width: e.pageX - this.state.x1,
 			cropConfirmDialogue: true
 		});
 		document.getElementById("cropConfirmation").style.display = "block";
+	}
+
+	createCrop() {
+		var image = new Image();
+
+		image.src = require("./../assets/manga/" +
+			this.props.manga +
+			"/volume" +
+			this.props.volume +
+			"/y (" +
+			this.props.page +
+			").jpg");
+		this.cropAfterLoad(image);
+	}
+
+	cropAfterLoad(loadedImg) {
+		var canvas = document.createElement("canvas");
+		canvas.width = this.state.width;
+		canvas.height = this.state.height;
+		var ctx = canvas.getContext("2d");
+		ctx.width = this.state.width;
+		ctx.height = this.state.height;
+
+		ctx.drawImage(
+			loadedImg,
+			this.state.x1 - this.state.imgXOffset,
+			this.state.y1 - this.state.imgYOffset,
+			this.state.width,
+			this.state.height,
+			0,
+			0,
+			this.state.width,
+			this.state.height
+		);
+		this.props.storeCardImage(canvas.toDataURL("image/jpeg"));
+		this.cancelCrop();
 	}
 
 	render() {
@@ -245,7 +306,18 @@ class MangaSinglePage extends React.Component {
 						top: this.state.y2
 					}}
 				>
-					<Button color="primary">Create Card</Button>
+					<Button
+						onClick={this.createCrop.bind(this)}
+						color="primary"
+					>
+						Translate
+					</Button>
+					<Button
+						onClick={this.createCrop.bind(this)}
+						color="primary"
+					>
+						Create Card
+					</Button>
 					<Button onClick={this.cancelCrop.bind(this)} color="accent">
 						Cancel
 					</Button>
@@ -254,6 +326,7 @@ class MangaSinglePage extends React.Component {
 				<img
 					id={this.state.imageStatus}
 					alt=""
+					ref="mangaslide"
 					onDragStart={this.ondragstart.bind(this)}
 					onDrag={this.ondragend.bind(this)}
 					onDragEnd={this.ondragenddone.bind(this)}

@@ -58,3 +58,27 @@ export function saveUser(user) {
     })
     .then(() => user);
 }
+
+export function saveCard(card) {
+  var user = firebaseAuth().currentUser;
+  var cardKey = firebase
+    .database()
+    .ref(`users/${user.uid}`)
+    .child("anki")
+    .push().key;
+  return ref
+    .child(`users/${user.uid}/anki/${cardKey}`)
+    .set({
+      front: card.front,
+      back: card.back
+    })
+    .then(() => card);
+}
+
+export function fetchAnkiDb() {
+  var user = firebaseAuth().currentUser;
+  return firebase
+    .database()
+    .ref(`users/${user.uid}/anki`)
+    .once("value");
+}
