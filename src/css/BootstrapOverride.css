@@ -97,6 +97,8 @@ body {
 
 .centered-container {
   background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
+  height: 100%;
+
   display: -webkit-box;
   display: -moz-box;
   display: flex;
@@ -122,7 +124,9 @@ body {
   -o-align-items: center;
   align-items: center;
   -ms-flex-align: center;
-  height: 100%;
+}
+
+.true-center {
 }
 
 .img-circle {
@@ -412,7 +416,6 @@ div::-webkit-scrollbar-thumb {
   cursor: wait;
 }
 #loaded {
-  width: 100%;
   cursor: pointer;
 }
 

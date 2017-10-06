@@ -92,6 +92,8 @@ class App extends Component {
             <Route
               exact
               path="/mangareader"
+              local={this.props.local.navbarcomponent}
+              lang={this.props.lang}
               render={() => <MangaReader store={this.props} />}
             />
             <Route

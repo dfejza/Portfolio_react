@@ -16,7 +16,7 @@ const styles = theme => ({
   card: {
     maxWidth: 400,
     minHeight: 300,
-    marginTop: 32,
+    marginTop: 16,
     marginRight: 16
   },
   media: {
@@ -47,10 +47,10 @@ class Projects extends React.Component {
           justify="center"
           align="stretch"
         >
-          <Grid item xs={12} sm={11} md={9} lg={8}>
-            <Grid container align="stretch">
+          <Grid item xs={12} sm={11} md={9} lg={9}>
+            <Grid container align="stretch" justify="center">
               {this.props.local.map((project, index) => (
-                <Grid key={index} item sm={6} md={6}>
+                <Grid key={index} item sm={6} md={5}>
                   <ProjectCardWrapped lang={this.props.lang} local={project} />
                 </Grid>
               ))}
