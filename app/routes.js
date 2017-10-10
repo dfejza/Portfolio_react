@@ -2,8 +2,9 @@ var fs = require('fs');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var xoauth2 = require("xoauth2");
+var mongoose = require('mongoose');
 
-// routes ======================================================================  
+// routes ======================================================================
 // application -------------------------------------------------------------
 // expose the routes to our app with module.exports
 module.exports = function(app) {
@@ -17,7 +18,7 @@ module.exports = function(app) {
 		if(postData.login == "admin1" && postData.pass == "admin1")
 		{
 			// Connect to the db
-			var core = req.db.collection('userinfo');
+			var core = mongoose.connection.collection('userinfo');
 			core.find().toArray(function(err, items) {
 				res.json(items);
 			});
@@ -27,7 +28,7 @@ module.exports = function(app) {
 		{
 			res.send("NO");
 		}
-		
+
 	});
 
 	// send data -------------------------------------------------------------
@@ -76,7 +77,7 @@ module.exports = function(app) {
 		});
 
 		// Connect to the db
-		var core = req.db.collection('userinfo');
+		var core = mongoose.connection.collection('userinfo');
 		core.insert(postData, function(err,results){
 			if(err) throw err;
 		});
@@ -86,37 +87,38 @@ module.exports = function(app) {
 	// update chat -------------------------------------------------------------
 	app.get('/updatechat', function(req, res) {
 		// Connect to the db
-		var core = req.db.collection('chat');
-		core.find().toArray(function(err, items) {
-			res.json(items); 
-		});
+		//console.log(mongoose.connection);
+		// var core = mongoose.connection.collection('chat');
+		// core.find().toArray(function(err, items) {
+		// 	res.json(items);
+		// });
 	});
 
 	// update chat -------------------------------------------------------------
 	app.post('/insertchat', function(req, res) {
-		var postData = {
-			time : new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
-			id : req.body.id,
-			msg : req.body.msg,
-		}
-		console.log(postData)
-		// Connect to the db
-		var core = req.db.collection('chat');
-		core.insert(postData, function(err,results){
-			if(err) throw err;
-		})
+		// var postData = {
+		// 	time : new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+		// 	id : req.body.id,
+		// 	msg : req.body.msg,
+		// }
+		// console.log(postData)
+		// // Connect to the db
+		// var core = mongoose.connection.collection('chat');
+		// core.insert(postData, function(err,results){
+		// 	if(err) throw err;
+		// })
 	});
 
 	// clear chat -------------------------------------------------------------
 	app.post('/clearchat', function(req, res) {
 		// Connect to the db
-		req.db.collection('chat').remove();
+		mongoose.connection.collection('chat').remove();
 	});
 
 	// MANGA DB ---------------------------------------------------------------
 	app.get('/api/updateMangaList', function (req, res, next) {
 		mangaDB = [];
-		var core = req.db.collection('manga');
+		var core = mongoose.connection.collection('manga');
 		//////////////////
 		fs.readdir("./public/assets/manga", (err, files) => {
 			files.forEach(function(data,indexk){
@@ -135,16 +137,16 @@ module.exports = function(app) {
 					manga.volumes = mangaPath.length-1;
 					manga.coverPage = manga.path + "/" + manga.name + ".jpg";
 					core.update(manga, manga, {upsert:true})
-				});	
+				});
 			});
 		});
 		res.send("updated")
 	});
 
 	app.get('/api/getMangaList', function (req, res, next) {
-		var core = req.db.collection('manga');
+		var core = mongoose.connection.collection('manga');
 		core.find().toArray(function(err, items) {
-			res.json(items); 
+			res.json(items);
 		});
 	});
 

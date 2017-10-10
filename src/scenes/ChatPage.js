@@ -1,41 +1,72 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  Panel,
-  Button,
-  Form,
-  FormGroup,
-  FormControl,
-  PageHeader
-} from "react-bootstrap";
+import io from "socket.io-client";
 import postRequests from "../components/post";
 import { firebaseAuth } from "../config/constants";
 import axios from "axios";
-
+import TextField from "material-ui/TextField";
+import Button from "material-ui/Button";
+import Typography from "material-ui/Typography";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
+import Tooltip from "material-ui/Tooltip";
 
-export default class ChatPage extends React.Component {
+const styles = theme => ({
+  root: theme.mixins.gutters({
+    paddingTop: 8,
+    paddingRight: 0,
+    paddingBottom: 8,
+    marginRight: 0,
+    flexGrow: 1,
+    marginTop: theme.spacing.unit * 6,
+    maxWidth: "1000px"
+  }),
+  chat: {
+    wordWrap: "break-word",
+    padding: ".5rem 2rem 0rem 0rem"
+  }
+});
+
+class ChatPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { chatData: [], user: "", msg: "" };
+    this.state = {
+      chatData: [],
+      user: "",
+      msg: "",
+      response: false,
+      endpoint: "http://127.0.0.1:3001",
+      userCount: 0
+    };
     this.GetFeed = this.GetFeed.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
-    this.handleChangeUser = this.handleChangeUser.bind(this);
     this.handleChangeMsg = this.handleChangeMsg.bind(this);
+    var socket = null;
   }
 
   GetFeed() {
     return axios.get("/updatechat").then(response => {
-      console.log(response.data);
       this.setState({ chatData: response.data });
     });
   }
 
   componentDidMount() {
-    this.GetFeed();
+    // Connect to the socket
+    this.socket = io.connect();
+    // Download chat history
+    this.socket.on("chat log", data => {
+      this.setState({ chatData: data });
+    });
+    // Listen for chat updates
+    this.socket.on("chat updated", msg => {
+      this.setState({ chatData: [...this.state.chatData, msg] });
+    });
+
+    this.socket.on("user count", userCount => {
+      this.setState({ userCount: userCount });
+    });
   }
 
   componentDidUpdate() {
@@ -43,19 +74,22 @@ export default class ChatPage extends React.Component {
   }
 
   sendMessage() {
-    postRequests.sendChat({
+    this.socket.emit("chat updated", {
       id: firebaseAuth().currentUser.email,
       msg: this.state.msg
     });
-    this.GetFeed();
     this.setState({ msg: "" });
   }
 
-  handleChangeUser(e) {
-    this.setState({ user: e.target.value });
-  }
   handleChangeMsg(e) {
     this.setState({ msg: e.target.value });
+    if (e.target.value.length > 1) {
+      //Display send button
+      document.getElementById("sendText").style.visibility = "visible";
+    } else {
+      //Hide send
+      document.getElementById("sendText").style.visibility = "hidden";
+    }
   }
 
   scrollToBottom = () => {
@@ -70,19 +104,23 @@ export default class ChatPage extends React.Component {
   };
 
   render() {
+    const classes = this.props.classes;
     return (
-      <Grid container>
+      <Grid container className={classes.root}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={24}>
-            <Grid item xs={12} md={9}>
-              <Panel>
-                <PageHeader>
-                  {this.props.store.data.chatRoomTitle[this.props.store.lang]}
-                  <small>v0.2</small>
-                </PageHeader>
+            <Grid item xs={12} md={7}>
+              <Paper className={classes.root} elevation={4}>
+                <span>
+                  <h3 id="inlineMessage">Chat</h3>
+                </span>{" "}
+                <span style={{ float: "right", paddingTop : "10px" }}>
+                  {this.state.userCount} user(s) online
+                </span>
+                <hr />
                 <div id="chat">
                   {this.state.chatData.map((item, index) => (
-                    <ChatMessage key={index} message={item} />
+                    <ChatMessageWrapped key={index} message={item} />
                   ))}
 
                   <div
@@ -92,23 +130,32 @@ export default class ChatPage extends React.Component {
                     }}
                   />
                 </div>
-                <Form inline>
-                  <FormGroup>
-                    <FormControl
-                      className="chatInput"
-                      id="chatMessageBox"
-                      value={this.state.msg}
-                      onChange={this.handleChangeMsg}
-                      onKeyPress={this.handleKeyPress}
-                      type="text"
-                      placeholder="message"
-                    />
-                  </FormGroup>{" "}
-                  <Button id="floatRight" onClick={this.sendMessage}>
+                <div className="inlineMessage">
+                  <TextField
+                    id="name"
+                    label="Message"
+                    value={this.state.msg}
+                    onChange={this.handleChangeMsg}
+                    margin="normal"
+                    onKeyPress={this.handleKeyPress}
+                    style={{ width: "86%", paddingRight: 0, marginRight: 0 }}
+                  />
+                  <Button
+                    dense
+                    id="sendText"
+                    color="primary"
+                    style={{
+                      width: "9% ",
+                      visibility: "hidden",
+                      padding: 0,
+                      margin: 0
+                    }}
+                    onClick={this.sendMessage}
+                  >
                     Send
                   </Button>
-                </Form>
-              </Panel>
+                </div>
+              </Paper>
             </Grid>
           </Grid>
         </Grid>
@@ -119,20 +166,44 @@ export default class ChatPage extends React.Component {
 
 class ChatMessage extends React.Component {
   render() {
+    const classes = this.props.classes;
     return (
       <div>
-        <p>
-          <i>[{this.props.message.time}]</i>{" "}
+        <div className={classes.chat}>
+          {" "}
+          {
+            //   <Tooltip
+            //   title={this.props.message.time}
+            //   id="tooltip-left"
+            //   placement="left-end"
+            // >
+          }
           <strong>
             <span>
               {this.props.message.id != null && this.props.message.id.length > 1
-                ? this.props.message.id
-                : "unnamed"}:
+                ? this.props.message.id.substring(
+                    0,
+                    this.props.message.id.indexOf("@") > 1
+                      ? this.props.message.id.indexOf("@")
+                      : this.props.message.id.length
+                  )
+                : "anon"}:
             </span>
-          </strong>{" "}
+          </strong>
+          {
+            //</Tooltip>
+          }{" "}
           {this.props.message.msg}
-        </p>
+        </div>
       </div>
     );
   }
 }
+
+ChatPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+const ChatMessageWrapped = withStyles(styles)(ChatMessage);
+
+export default withStyles(styles)(ChatPage);
