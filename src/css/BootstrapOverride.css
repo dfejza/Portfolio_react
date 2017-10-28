@@ -3,7 +3,7 @@ html * {
 }
 
 body {
-  background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
+  background: #ffffff url(./../assets/noise.png) fixed;
 }
 
 html,
@@ -96,7 +96,7 @@ body {
 }
 
 .centered-container {
-  background: linear-gradient(141deg, #f8ffff 0%, #ccfff7 51%, #d7ffd9 75%);
+
   height: 100%;
 
   display: -webkit-box;
