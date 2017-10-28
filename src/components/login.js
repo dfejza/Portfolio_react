@@ -168,7 +168,7 @@ class LoginDialogue extends React.Component {
                 <Button
                   className={classes.button}
                   type="submit"
-                  disabled
+                  
                   value="signup"
                   onClick={this.handleSubmitRegister}
                 >
