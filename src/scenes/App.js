@@ -7,13 +7,43 @@ import { firebaseAuth } from "../config/constants";
 
 //Comps
 import NavigationBar from "./../components/navbar.js";
-import HomePage from "./HomePage";
-import ContactMe from "./ContactMe.js";
-import Projects from "./../scenes/Projects";
-import ChatPage from "./../scenes/ChatPage";
-import Dashboard from "./../scenes/Dashboard";
 import { connect } from "react-redux";
 import "./../css/BootstrapOverride.css";
+
+// Chunking
+import Loadable from 'react-loadable';
+
+const LoadableContact = Loadable({
+  loader: () => import("./ContactMe.js"),
+  loading() {
+    return <div>Loading...</div>
+  }
+});
+const LoadableProjects = Loadable({
+  loader: () => import("./../scenes/Projects"),
+  loading() {
+    return <div>Loading...</div>
+  }
+});
+const LoadableChatPage = Loadable({
+  loader: () => import("./../scenes/ChatPage"),
+  loading() {
+    return <div>Loading...</div>
+  }
+});
+const LoadableDashboard = Loadable({
+  loader: () => import("./../scenes/Dashboard"),
+  loading() {
+    return <div>Loading...</div>
+  }
+});
+const LoadableHome = Loadable({
+  loader: () => import("./HomePage"),
+  loading() {
+    return <div>Loading...</div>
+  },
+  delay: 100, // 0.1 seconds
+});
 
 class App extends Component {
   state = {
@@ -59,7 +89,7 @@ class App extends Component {
               exact
               path="/"
               render={() => (
-                <HomePage
+                <LoadableHome
                   local={this.props.local.homePage}
                   lang={this.props.lang}
                 />
@@ -67,16 +97,17 @@ class App extends Component {
             />
             <Route
               path="/contact"
-              getComponent={(location, callback) => {
-                require.ensure([], function (require) {
-                  callback(null, require(HomePage));
-                });
-              }}
+              render={() => (
+                <LoadableContact
+                  local={this.props.local.contactPage}
+                  lang={this.props.lang}
+                />
+              )}
             />
             <Route
               path="/projects"
               render={() => (
-                <Projects
+                <LoadableProjects
                   local={this.props.local.projectsPage}
                   lang={this.props.lang}
                 />
@@ -84,13 +115,13 @@ class App extends Component {
             />
             <Route
               path="/chat"
-              render={() => <ChatPage store={this.props} />}
+              render={() => <LoadableChatPage store={this.props} />}
             />
             <Route
               path="/dashboard"
               render={() =>
                 this.state.authed === true ? (
-                  <Dashboard />
+                  <LoadableDashboard />
                 ) : (
                   <Redirect
                     to={{ pathname: "/", state: { from: this.props.location } }}
