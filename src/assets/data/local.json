@@ -1,7 +1,7 @@
 {
     "homePage": {
         "job": ["Software & Web Developer", "ソフトウェアエンジニア & ウェブデベロッパー"],
-        "location": ["Tokyo, Japan", "神奈川県, 日本"],
+        "location": ["New York, USA", "ニューヨーク, アメリカ"],
         "aboutmetitle": ["About Me", "自己紹介"],
         "aboutmecontent": [
             "I've always had a passion residing in all things electronics, be it software or hardware. A desire has driven me to learn, create, and improve in anything seen fit (from programming languages to actual language learning). Even after a full time time job as a Software Engineer, I still found myself immersed in programming on my free time. That's the beauty of something you love.",
@@ -84,7 +84,7 @@
             "Or maybe a comment? Fill out the fields and I'll respond to you via the provided email.",
             "それともコメントですか？フィールドに記入してください。返信します"
         ],
-        "location": ["Tokyo, Japan", "神奈川県, 日本"],
+        "location": ["New York, America", "ニューヨーク, アメリカ"],
         "email": ["Email", "\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9"],
         "FormSubmit": ["Send", "\u9001\u308b"],
         "name": ["Name", "\u540d\u524d"],

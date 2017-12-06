@@ -128,13 +128,6 @@ class NavigationBar extends React.Component {
                   />
                 </ListItem>
               </Link>
-              <Link to="/mangareader">
-                <ListItem button>
-                  <ListItemText
-                    primary={this.props.local.mangareader[this.props.lang]}
-                  />
-                </ListItem>
-              </Link>
               <Link to="/dashboard">
                 <ListItem button>
                   <ListItemIcon>

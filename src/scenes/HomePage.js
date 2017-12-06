@@ -114,11 +114,10 @@ class WhatIDo extends React.Component {
         <p>
           <br />
           <b>Front-end</b>: ES6, React, AngularJS, Angular, VueJS, JQuery<br />
-          <b>Back-end</b>: NodeJS, APIs, Routing, NoSQL, Python<br />
+          <b>Back-end</b>: NodeJS, APIs & Routing, NoSQL, Python<br />
           <b>Programming languages</b>: C++, C, Java<br />
           <b>Other</b>: Unix, VHDL, MIPS<br />
-          <b>Apps</b>: Ionic<br />
-          <b>Cloud</b>: Google, Firebase<br />
+          <b>Cloud</b>: Ionic, Firebase<br />
           <b>E-Commerce</b>: Shopify
         </p>
       </div>

@@ -11,8 +11,6 @@ import HomePage from "./HomePage";
 import ContactMe from "./ContactMe.js";
 import Projects from "./../scenes/Projects";
 import ChatPage from "./../scenes/ChatPage";
-import MangaReader from "./../scenes/MangaReader";
-import MangaRaderPage from "./../scenes/MangaReaderPage";
 import Dashboard from "./../scenes/Dashboard";
 import { connect } from "react-redux";
 import "./../css/BootstrapOverride.css";
@@ -69,12 +67,11 @@ class App extends Component {
             />
             <Route
               path="/contact"
-              render={() => (
-                <ContactMe
-                  local={this.props.local.contactPage}
-                  lang={this.props.lang}
-                />
-              )}
+              getComponent={(location, callback) => {
+                require.ensure([], function (require) {
+                  callback(null, require(HomePage));
+                });
+              }}
             />
             <Route
               path="/projects"
@@ -89,22 +86,6 @@ class App extends Component {
               path="/chat"
               render={() => <ChatPage store={this.props} />}
             />
-            <Route
-              exact
-              path="/mangareader"
-              local={this.props.local.navbarcomponent}
-              lang={this.props.lang}
-              render={() => <MangaReader store={this.props} />}
-            />
-            <Route
-              path="/mangareader/:manga/:volume/:page"
-              render={props => (
-                <MangaRaderPage
-                  {...props}
-                  mangaData={this.props.data.mangaDb}
-                />
-              )}
-            />;
             <Route
               path="/dashboard"
               render={() =>
