@@ -54,6 +54,26 @@
             ]
         },
         {
+            "title": ["Comic Learner", "Comic Learner"],
+            "image": "mangalearner.png",
+            "subtitle": [
+                "Website used to study Japanese in a productive manner. Read manga, save unkown words, create flashcards and review them.",
+                "生産的な方法で日本語を勉強するウェブサイト。漫画を読んだり、知られていない言葉を保存したり、フラッシュカードを作成したり、レビューしたりできます"
+            ],
+            "link": "https://github.com/dfejza/comic-learner",
+            "detailedlist": [
+                [
+                    "Frontend: React, Javascript, Redux, Materials",
+                    "フレームワーク: React, Javascript, Redux, Materials"
+                ],
+                [
+                    "Backend: Firebase",
+                    "バックエンド: Firebase"
+                ],
+                ["Work In Progress", "進行中の作業"]
+            ]
+        },
+        {
             "title": ["Challonger", "Challonger"],
             "image": "challonger.png",
             "subtitle": [
