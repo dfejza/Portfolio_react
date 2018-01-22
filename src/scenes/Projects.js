@@ -14,13 +14,14 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3
   }),
   card: {
-    maxWidth: 400,
-    height: 350,
+    maxWidth: 450,
+    height: 425,
     marginTop: 16,
     marginRight: 16
   },
   media: {
-    height: 150
+    height: 200,
+    // borderBottom: ".5px solid rgba(0, 0, 0, .5)"
   },
   expand: {
     transform: "rotate(0deg)",
@@ -88,6 +89,7 @@ class ProjectCard extends React.Component {
             <h2>
               {this.props.local.title[this.props.lang]}
             </h2>
+            <hr/>
             <p>
               {this.props.local.subtitle[this.props.lang]}
             </p>

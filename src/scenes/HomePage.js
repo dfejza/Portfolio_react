@@ -13,6 +13,15 @@ const styles = theme => ({
 });
 
 class HomePage extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {leftSideHeight : 0};
+  }
+
+  componentDidMount() {
+    this.setState({ leftSideHeight : document.getElementById('leftPart').clientHeight});
+  }
+
   render() {
     const classes = this.props.classes;
     return (
@@ -25,7 +34,8 @@ class HomePage extends React.Component {
         >
           <Grid item xs={12} sm={11} md={10} lg={7}>
             <Grid container justify="center" align="stretch">
-              <Grid item xs={12} sm={7}>
+
+              <Grid item xs={12} sm={7} id="leftPart">
                 <Paper className={classes.root} elevation={4}>
                   <ProfileCard
                     lang={this.props.lang}
@@ -36,18 +46,21 @@ class HomePage extends React.Component {
                   <AboutMe lang={this.props.lang} local={this.props.local} />
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={5}>
+
+              <Grid item xs={12} sm={5} style={{ height: this.state.leftSideHeight}}>
                 <Paper
-                  style={{ height: "74%" }}
+                  style={{ height: "76%"}}
                   className={classes.root}
                   elevation={4}
                 >
                   <WhatIDo lang={this.props.lang} local={this.props.local} />
                 </Paper>
-                <Paper className={classes.root} elevation={4}>
+                <Paper className={classes.root} elevation={4}
+                   style={{ height: "14%"}}>
                   <Contact lang={this.props.lang} local={this.props.local} />
                 </Paper>
               </Grid>
+
               <Grid item xs={12} sm={12}>
                 <Paper className={classes.root} elevation={4}>
                   <LatestWork lang={this.props.lang} local={this.props.local} />

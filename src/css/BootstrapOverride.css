@@ -22,7 +22,9 @@ body {
 }
 
 .WhatIDo {
-  margin-top: 50px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .profileCard {
