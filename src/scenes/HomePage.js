@@ -38,7 +38,7 @@ class HomePage extends React.Component {
               </Grid>
               <Grid item xs={12} sm={5}>
                 <Paper
-                  style={{ height: "76%" }}
+                  style={{ height: "74%" }}
                   className={classes.root}
                   elevation={4}
                 >
@@ -112,9 +112,8 @@ class WhatIDo extends React.Component {
           <b>{this.props.local.whatido[this.props.lang]}</b>
         </h3>
         <p>
-          <br />
-          <b>Front-end</b>: ES6, React, AngularJS, Angular, VueJS, JQuery<br />
-          <b>Back-end</b>: NodeJS, APIs & Routing, NoSQL, Python<br />
+          <b>Front-end</b>: React, AngularJS, Angular, JavaScript<br />
+          <b>Back-end</b>: NodeJS, Go, SQL<br />
           <b>Programming languages</b>: C++, C, Java<br />
           <b>Other</b>: Unix, VHDL, MIPS<br />
           <b>Cloud</b>: Ionic, Firebase<br />
@@ -174,7 +173,7 @@ class Contact extends React.Component {
               </a>
             </Grid>
             <Grid item xs={2} sm={2}>
-              <a href="todo">
+              <a href="https://www.linkedin.com/in/dardan-fejza-3a272b157/">
                 <img
                   width={28}
                   alt=""
