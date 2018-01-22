@@ -15,7 +15,7 @@ const styles = theme => ({
   }),
   card: {
     maxWidth: 400,
-    minHeight: 300,
+    height: 350,
     marginTop: 16,
     marginRight: 16
   },
@@ -85,12 +85,12 @@ class ProjectCard extends React.Component {
             />
           </Collapse>
           <CardContent>
-            <Typography type="headline" component="h2">
+            <h2>
               {this.props.local.title[this.props.lang]}
-            </Typography>
-            <Typography component="p">
+            </h2>
+            <p>
               {this.props.local.subtitle[this.props.lang]}
-            </Typography>
+            </p>
           </CardContent>
           <Collapse
             in={this.state.expanded}

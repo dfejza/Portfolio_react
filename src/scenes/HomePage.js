@@ -110,7 +110,7 @@ class WhatIDo extends React.Component {
       <div className="WhatIDo">
         <h3>
           <b>{this.props.local.whatido[this.props.lang]}</b>
-        </h3>
+        </h3><br/>
         <p>
           <b>Front-end</b>: React, AngularJS, Angular, JavaScript<br />
           <b>Back-end</b>: NodeJS, Go, SQL<br />
