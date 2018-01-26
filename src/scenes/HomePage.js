@@ -32,7 +32,7 @@ class HomePage extends React.Component {
           justify="center"
           align="stretch"
         >
-          <Grid item xs={12} sm={11} md={10} lg={7}>
+          <Grid item xs={12} sm={11} md={9} lg={6}>
             <Grid container justify="center" align="stretch">
 
               <Grid item xs={12} sm={7} id="leftPart">

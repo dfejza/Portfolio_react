@@ -57,20 +57,27 @@
             "title": ["Comic Learner", "Comic Learner"],
             "image": "mangalearner.png",
             "subtitle": [
-                "Website used to study Japanese in a productive manner. Read manga, save unkown words, create flashcards and review them.",
+                "Website created to study Japanese in an educational manner. Users can read manga, save unknown words by cropping portions of the manga, and review them in a flashcard manner.",
                 "生産的な方法で日本語を勉強するウェブサイト。漫画を読んだり、知られていない言葉を保存したり、フラッシュカードを作成したり、レビューしたりできます"
             ],
             "link": "https://github.com/dfejza/comic-learner",
             "detailedlist": [
                 [
-                    "Frontend: React, Javascript, Redux, Materials",
-                    "フレームワーク: React, Javascript, Redux, Materials"
+                    "JavaScript logic used to allow users to crop portions of the image, saving them as base64 data",
+                    "ユーザーがイメージの一部をトリミングしてbase64データとして保存できるようにするJavaScriptロジック"
                 ],
                 [
-                    "Backend: Firebase",
-                    "バックエンド: Firebase"
+                    "Firebase used to handle user authentication and storage of the saved images.",
+                    "Firebaseは、保存された画像のユーザ認証と保存を処理するために使用されました。"
                 ],
-                ["Work In Progress", "進行中の作業"]
+                [
+                    "SQL server to store statistics of review sessions and individual cards. Review sessions change based off this data (e.g. incorrectly answered flashcards are shown more often).",
+                    "レビューセッションと個々のカードの統計情報を格納するSQLサーバ。審査セッションはこのデータに基づいて変更されます（誤って返信されたフラッシュカードが頻繁に表示されるなど）。"
+                ],
+                [
+                    "NodeJS communicates with SQL, and handles frontend API calls such as fetching the user’s current review session or card statistics.",
+                    "NodeJSはSQLと通信し、ユーザーの現在のレビューセッションやカードの統計情報を取得するなどのフロントエンドAPI呼び出しを処理します。"
+                ]
             ]
         },
         {
@@ -92,6 +99,26 @@
                     "CURLを介してAPI呼び出しを使用してバックエンドとのインタフェースをとります。"
                 ],
                 ["Work In Progress", "進行中の作業"]
+            ]
+        },
+        {
+            "title": ["TruerPeopleSearch", "TruerPeopleSearch"],
+            "image": "truerpeoplesearch.png",
+            "subtitle": [
+                "Website used to reverse phone number search. Achieved by web crawling an existing service. Exercise to familiarize myself with Go.",
+                "電話番号の検索を元に戻すために使用されたウェブサイト。既存のサービスをWebクロールすることで達成されます。 Goに慣れるためのエクササイズ"
+            ],
+            "link": "https://github.com/dfejza/truerpeoplesearch",
+            "detailedlist": [
+                ["Material frontend written using React.js used to handle user input and name", "React.jsを使って書かれた、ユーザーの入力と名前を扱うために使われたマテリアルフロントエンド"],
+                [
+                    "Backend written only in Go used to handle API requests, and web scrapes information based on the user inputted phone number",
+                    "API要求を処理するために使用されるGoでのみ書かれたバックエンド、およびユーザーが入力した電話番号に基づいて情報を取り込むWeb"
+                ],
+                [
+                    "All results are stored in a SQL database, allowing fast lookups for repeated searches",
+                    "すべての結果はSQLデータベースに保存され、繰り返し検索を高速に検索できます"
+                ]
             ]
         }
     ],
