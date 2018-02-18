@@ -55,7 +55,7 @@ class Projects extends React.Component {
           <Grid item xs={12} sm={11} md={9} lg={9}>
             <Grid container align="stretch" justify="center">
               {this.props.local.map((project, index) => (
-                <Grid key={index} item sm={6} md={4}>
+                <Grid key={index} item xs={12} md={6} lg={4}>
                   <ProjectCardWrapped lang={this.props.lang} local={project} />
                 </Grid>
               ))}

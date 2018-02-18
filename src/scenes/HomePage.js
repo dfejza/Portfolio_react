@@ -22,6 +22,10 @@ const styles = theme => ({
       flexBasis: "90%",
       margin: "0",
     },
+    "@media only screen and (max-device-width: 2000px)" :{
+      flexBasis: "75%",
+      margin: "0",
+    }
   }),
   upperFlex: {
     display: "flex",
@@ -45,7 +49,7 @@ const styles = theme => ({
   rightFlex: {
     display: "flex",
     flexDirection: "column",
-    margin: "20px",
+    margin: "20px 20px 20px 0",
     //flexGrow: 1,
     flex: "1 1 0",
   },
