@@ -8,8 +8,67 @@ const styles = theme => ({
   root: theme.mixins.gutters({
     paddingTop: 16,
     paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3
-  })
+    marginTop: theme.spacing.unit * 3,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    flexBasis: "60%",
+    flexWrap: "wrap",
+    "@media only screen and (max-device-width: 720px)" :{
+      flexBasis: "100%",
+      margin: "0",
+    },
+    "@media only screen and (max-device-width: 1600px)" :{
+      flexBasis: "90%",
+      margin: "0",
+    },
+  }),
+  upperFlex: {
+    display: "flex",
+    flexDirection: "row",
+    margin: "20px",
+    flex: "1 0 auto",
+  },
+  bottomFlex: {
+    display: "flex",
+    margin: "0 40px 40px 40px",
+    flexDirection: "column",
+    flex: "1 0 auto",
+  },
+  leftFlex: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "20px",
+    //flexGrow: 0,
+    flex: "2 1 0",
+  },
+  rightFlex: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "20px",
+    //flexGrow: 1,
+    flex: "1 1 0",
+  },
+  rightFlexAbout: {
+    display: "flex",
+    flex: "1 1 0",
+  },
+  aboutMe: {
+    marginTop: 32,
+    justifyContent: "center",
+  },
+  mobile:{
+    "@media only screen and (max-device-width: 720px)" :{
+      flexDirection: "column",
+      flex: "1 1 auto",
+      margin: "0",
+    }
+  },
+  paper: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3,
+  }),
 });
 
 class HomePage extends React.Component {
@@ -18,57 +77,43 @@ class HomePage extends React.Component {
     this.state = {leftSideHeight : 0};
   }
 
-  componentDidMount() {
-    this.setState({ leftSideHeight : document.getElementById('leftPart').clientHeight});
-  }
+  // componentDidMount() {
+  //   this.setState({ leftSideHeight : document.getElementById('leftPart').clientHeight});
+  // }
 
   render() {
     const classes = this.props.classes;
     return (
       <div className={classes.root}>
-        <Grid
-          container
-          className={classes.root}
-          justify="center"
-          align="stretch"
-        >
-          <Grid item xs={12} sm={11} md={9} lg={6}>
-            <Grid container justify="center" align="stretch">
+        <div className={classes.upperFlex + ' ' + classes.mobile}>
+          <div className={classes.leftFlex + ' ' + classes.mobile}>
+            <Paper elevation={6} className={classes.paper}>
+              <ProfileCard
+                lang={this.props.lang}
+                local={this.props.local}
+              />
+            </Paper>
+            <Paper elevation={6} className={classes.paper}>
+              <AboutMe lang={this.props.lang} local={this.props.local} />
+            </Paper>
+          </div>
 
-              <Grid item xs={12} sm={7} id="leftPart">
-                <Paper className={classes.root} elevation={4}>
-                  <ProfileCard
-                    lang={this.props.lang}
-                    local={this.props.local}
-                  />
-                </Paper>
-                <Paper className={classes.root} elevation={4}>
-                  <AboutMe lang={this.props.lang} local={this.props.local} />
-                </Paper>
-              </Grid>
-
-              <Grid item xs={12} sm={5} style={{ height: this.state.leftSideHeight}}>
-                <Paper
-                  style={{ height: "76%"}}
-                  className={classes.root}
-                  elevation={4}
-                >
-                  <WhatIDo lang={this.props.lang} local={this.props.local} />
-                </Paper>
-                <Paper className={classes.root} elevation={4}
-                   style={{ height: "14%"}}>
-                  <Contact lang={this.props.lang} local={this.props.local} />
-                </Paper>
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Paper className={classes.root} elevation={4}>
-                  <LatestWork lang={this.props.lang} local={this.props.local} />
-                </Paper>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+          <div className={classes.rightFlex + ' ' + classes.mobile}>
+            <div className={classes.rightFlexAbout + ' ' + classes.mobile}>
+              <Paper elevation={6} className={classes.paper + ' ' + classes.aboutMe}>
+                <WhatIDo lang={this.props.lang} local={this.props.local} />
+              </Paper>
+            </div>
+            <Paper elevation={6} className={classes.paper}>
+              <Contact lang={this.props.lang} local={this.props.local} />
+            </Paper>
+          </div>
+        </div>
+        <div className={classes.bottomFlex + ' ' + classes.mobile}>
+          <Paper elevation={2} className={classes.paper}>
+            <LatestWork lang={this.props.lang} local={this.props.local} />
+          </Paper>
+        </div>
       </div>
     );
   }
@@ -105,7 +150,7 @@ class ProfileCard extends React.Component {
 class AboutMe extends React.Component {
   render() {
     return (
-      <div className="AboutMe">
+      <div>
         <h3>
           <b>{this.props.local.aboutmetitle[this.props.lang]}</b>
         </h3>
@@ -120,7 +165,7 @@ class AboutMe extends React.Component {
 class WhatIDo extends React.Component {
   render() {
     return (
-      <div className="WhatIDo">
+      <div>
         <h3>
           <b>{this.props.local.whatido[this.props.lang]}</b>
         </h3><br/>
@@ -139,7 +184,7 @@ class WhatIDo extends React.Component {
 class LatestWork extends React.Component {
   render() {
     return (
-      <div className="LatestWork">
+      <div>
         <h3>
           <b>{this.props.local.latestprojects[this.props.lang]}</b>
         </h3>

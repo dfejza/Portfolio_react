@@ -14,10 +14,14 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3
   }),
   card: {
-    maxWidth: 450,
-    height: 500,
+    maxWidth: 500,
+    minHeight: 500,
+    maxHeight: 600,
     marginTop: 16,
     marginRight: 16
+  },
+  cardText:{
+    fontSize: "1.3em"
   },
   media: {
     height: 250,
@@ -90,7 +94,7 @@ class ProjectCard extends React.Component {
               {this.props.local.title[this.props.lang]}
             </h2>
             <hr/>
-            <p>
+            <p className={classes.cardText}>
               {this.props.local.subtitle[this.props.lang]}
             </p>
           </CardContent>

@@ -65,9 +65,6 @@ body {
   margin: 0 auto;
 }
 
-.AboutMeGridLeftSide {
-}
-
 #AboutMeGrid {
   margin-top: 10%;
 }
@@ -152,8 +149,7 @@ body {
 p,
 .paragraph {
   font-family: "Roboto", sans-serif;
-  font-size: 1.8rem;
-  line-height: 2.4rem ;
+  font-size: 1.4rem;
   margin-bottom: 2rem ;
   margin-top: 0;
 }

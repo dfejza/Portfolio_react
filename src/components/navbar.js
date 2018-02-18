@@ -112,7 +112,7 @@ class NavigationBar extends React.Component {
         <List>
           {!this.props.authed && (
             <LoginDialogueButton
-              onDrawerClose={this.toggleDrawer("right", false)}
+              onClose={this.toggleDrawer("right", false)}
               lang={this.props.lang}
               authed={this.props.authed}
               contact={this.props.loginLocal}
@@ -150,7 +150,7 @@ class NavigationBar extends React.Component {
           local={this.props.local}
           selectedValue={this.state.value}
           open={this.state.openLang}
-          onRequestClose={this.handleRequestCloseLang}
+          onClose={this.handleRequestCloseLang}
         />
       </div>
     );
@@ -167,7 +167,7 @@ class NavigationBar extends React.Component {
           anchor="right"
           open={this.state.right}
           width={300}
-          onRequestClose={this.toggleDrawer("right", false)}
+          onClose={this.toggleDrawer("right", false)}
         >
           <div
             tabIndex={0}
@@ -193,18 +193,18 @@ NavigationBar.propTypes = {
 
 class LanguageDialogue extends React.Component {
   handleRequestClose = () => {
-    this.props.onRequestClose(this.props.selectedValue);
+    this.props.onClose(this.props.selectedValue);
   };
 
   handleListItemClick = value => {
-    this.props.onRequestClose(value);
+    this.props.onClose(value);
   };
 
   render() {
     const { classes, onRequestClose, selectedValue, ...other } = this.props;
 
     return (
-      <Dialog onRequestClose={this.handleRequestClose} {...other}>
+      <Dialog onClose={this.handleRequestClose} {...other}>
         <DialogTitle>
           {this.props.local.selectlanguageheader[this.props.lang]}
         </DialogTitle>
