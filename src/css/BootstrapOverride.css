@@ -524,35 +524,3 @@ div::-webkit-scrollbar-thumb {
   float: right;
   position: relative;
 }
-
-#imageCropping {
-  pointer-events: none;
-  cursor: crosshair;
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 0;
-  width: 0;
-  box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);
-  border: 3px dotted red;
-  z-index: 2;
-  &--disabled {
-    cursor: inherit;
-  }
-  &__image {
-    display: block;
-    max-width: 100%;
-  }
-}
-
-#cropConfirmation {
-  cursor: crosshair;
-  position: absolute;
-  display: none;
-  background-color: white;
-  margin-top: 10px;
-  z-index: 3;
-}
